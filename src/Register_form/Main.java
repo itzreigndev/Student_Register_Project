@@ -1196,6 +1196,7 @@ public class Main {
 
         inner_agri.add(new_p_courses);
 
+        //Show the Frame when clicked
         btn_course.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1204,6 +1205,7 @@ public class Main {
             }
         });
 
+        //Go back to home/dashboard
         new_home_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1219,6 +1221,25 @@ public class Main {
                 fcourses.setVisible(true);
             }
         });
+
+        // Add JFrame for Entrepreneurship
+        JFrame inner_ent = new JFrame();
+        inner_ent.setLayout(null);
+        inner_ent.setSize(1920, 1080);
+        inner_ent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_ent.setLayout(null);
+        inner_ent.setLocationRelativeTo(null);
+        inner_ent.setResizable(false);
+
+        //Show the frame when clicked
+        btn2_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_ent.setVisible(true);
+            }
+        });
+
 
     }
 }
