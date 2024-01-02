@@ -1675,7 +1675,7 @@ public class Main {
         new5_p_courses.add(new5_h_blocks_btn);
         new5_p_courses.add(new5_s_view_btn);
 
-        // Add JFrame for Entrepreneurship
+        // Add JFrame for Food Legislation
         JFrame inner_food_legislation = new JFrame();
         inner_food_legislation.setLayout(null);
         inner_food_legislation.setSize(1920, 1080);
@@ -1709,6 +1709,130 @@ public class Main {
                 fcourses.setVisible(true);
             }
         });
+
+        //Copy From s_view_btn
+
+        JButton new6_s_view_btn= new JButton(" Standard View");
+        new6_s_view_btn.setBounds(1650, 190, 200, 55);
+        new6_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_s_view_btn.setForeground(Color.white);
+        new6_s_view_btn.setBackground(color);
+        new6_s_view_btn.setBorder(null);
+        new6_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new6_h_blocks_btn= new JButton(" Hide blocks");
+        new6_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new6_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_h_blocks_btn.setForeground(Color.white);
+        new6_h_blocks_btn.setBackground(color);
+        new6_h_blocks_btn.setBorder(null);
+        new6_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new6_m_courses_btn= new JButton(" My Courses");
+        new6_m_courses_btn.setBounds(500, 190, 150, 55);
+        new6_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_m_courses_btn.setForeground(Color.white);
+        new6_m_courses_btn.setBackground(color);
+        new6_m_courses_btn.setBorder(null);
+        new6_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new6_events_btn= new JButton(" Events");
+        new6_events_btn.setBounds(350, 190, 150, 55);
+        new6_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_events_btn.setForeground(Color.white);
+        new6_events_btn.setBackground(color);
+        new6_events_btn.setBorder(null);
+        new6_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new6_dashboard_btn= new JButton(" Dashboard");
+        new6_dashboard_btn.setBounds(200, 190, 150, 55);
+        new6_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_dashboard_btn.setForeground(Color.white);
+        new6_dashboard_btn.setBackground(color);
+        new6_dashboard_btn.setBorder(null);
+        new6_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new6_home_btn= new JButton(" Home");
+        new6_home_btn.setBounds(50, 190, 150, 55);
+        new6_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_home_btn.setForeground(Color.white);
+        new6_home_btn.setBackground(color);
+        new6_home_btn.setBorder(null);
+        new6_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new6_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        new6_header_courses.setIcon(moodle_profile_pic);
+        new6_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new6_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new6_p_ctop= new JPanel();
+        new6_p_ctop.setBounds(10, 10, 1920, 180);
+        new6_p_ctop.setBackground(new Color(52, 204, 255));
+        new6_p_ctop.setLayout(null);
+        new6_p_ctop.add(new6_header_courses);
+
+        //Copy From p_course
+
+        JPanel new6_p_courses= new JPanel();
+        new6_p_courses.setBounds(0, 0, 1920, 250);
+        new6_p_courses.setVisible(true);
+        new6_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new6_p_courses.setBackground(color);
+        new6_p_courses.setLayout(null);
+        new6_p_courses.add(new6_p_ctop);
+        new6_p_courses.add(new6_home_btn);
+        new6_p_courses.add(new6_dashboard_btn);
+        new6_p_courses.add(new6_events_btn);
+        new6_p_courses.add(new6_m_courses_btn);
+        new6_p_courses.add(new6_h_blocks_btn);
+        new6_p_courses.add(new6_s_view_btn);
+
+        // Add JFrame for Food Industrial Design
+        JFrame inner_indus_design = new JFrame();
+        inner_indus_design.setLayout(null);
+        inner_indus_design.setSize(1920, 1080);
+        inner_indus_design.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_indus_design.setLayout(null);
+        inner_indus_design.setLocationRelativeTo(null);
+        inner_indus_design.setResizable(false);
+        inner_indus_design.add(new6_p_courses);
+
+        //Show the frame when clicked
+        btn6_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_indus_design.setVisible(true);
+            }
+        });
+
+        new6_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_indus_design.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new6_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_indus_design.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+
 
 
 
