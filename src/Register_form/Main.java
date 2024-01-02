@@ -521,7 +521,7 @@ public class Main {
 
 
         JPanel p_ctop= new JPanel();
-        p_ctop.setBounds(10, 10, 1460, 180);
+        p_ctop.setBounds(10, 10, 1920, 180);
         p_ctop.setBackground(new Color(52, 204, 255));
         p_ctop.setLayout(null);
 
@@ -532,7 +532,7 @@ public class Main {
 
 
         JPanel p_courses= new JPanel();
-        p_courses.setBounds(0, 0, 1480, 250);
+        p_courses.setBounds(0, 0, 1920, 250);
         p_courses.setVisible(true);
         p_courses.setBorder(new LineBorder(Color.cyan, 2));
         p_courses.setBackground(color);
@@ -618,16 +618,6 @@ public class Main {
         p_agri.add(btn_course);
         p_agri.add(l_ikey);
 
-        JFrame inner_agri = new JFrame();
-        inner_agri.setLayout(null);
-        inner_agri.setBounds(0, 0, 1920, 1080);
-
-        btn_course.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                inner_agri.setVisible(true);
-            }
-        });
 
         //EntrepreneurShip
 
@@ -923,7 +913,7 @@ public class Main {
 
 
         JFrame fcourses= new JFrame();
-        fcourses.setSize(1500, 820);
+        fcourses.setSize(1920, 1080);
         fcourses.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fcourses.setLayout(null);
         fcourses.setLocationRelativeTo(null);
@@ -1104,5 +1094,18 @@ public class Main {
             }
 
         });
+        //New JFrame for Agri_Food course
+
+        JFrame inner_agri = new JFrame();
+        inner_agri.setLayout(null);
+        inner_agri.setBounds(0, 0, 1920, 1080);
+        inner_agri.add(p_ctop);
+        btn_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri.setVisible(true);
+            }
+        });
+
     }
 }
