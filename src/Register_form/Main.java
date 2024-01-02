@@ -1588,6 +1588,128 @@ public class Main {
             }
         });
 
+        //Copy From s_view_btn
+
+        JButton new5_s_view_btn= new JButton(" Standard View");
+        new5_s_view_btn.setBounds(1650, 190, 200, 55);
+        new5_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_s_view_btn.setForeground(Color.white);
+        new5_s_view_btn.setBackground(color);
+        new5_s_view_btn.setBorder(null);
+        new5_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new5_h_blocks_btn= new JButton(" Hide blocks");
+        new5_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new5_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_h_blocks_btn.setForeground(Color.white);
+        new5_h_blocks_btn.setBackground(color);
+        new5_h_blocks_btn.setBorder(null);
+        new5_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new5_m_courses_btn= new JButton(" My Courses");
+        new5_m_courses_btn.setBounds(500, 190, 150, 55);
+        new5_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_m_courses_btn.setForeground(Color.white);
+        new5_m_courses_btn.setBackground(color);
+        new5_m_courses_btn.setBorder(null);
+        new5_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new5_events_btn= new JButton(" Events");
+        new5_events_btn.setBounds(350, 190, 150, 55);
+        new5_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_events_btn.setForeground(Color.white);
+        new5_events_btn.setBackground(color);
+        new5_events_btn.setBorder(null);
+        new5_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new5_dashboard_btn= new JButton(" Dashboard");
+        new5_dashboard_btn.setBounds(200, 190, 150, 55);
+        new5_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_dashboard_btn.setForeground(Color.white);
+        new5_dashboard_btn.setBackground(color);
+        new5_dashboard_btn.setBorder(null);
+        new5_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new5_home_btn= new JButton(" Home");
+        new5_home_btn.setBounds(50, 190, 150, 55);
+        new5_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_home_btn.setForeground(Color.white);
+        new5_home_btn.setBackground(color);
+        new5_home_btn.setBorder(null);
+        new5_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new5_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        new5_header_courses.setIcon(moodle_profile_pic);
+        new5_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new5_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new5_p_ctop= new JPanel();
+        new5_p_ctop.setBounds(10, 10, 1920, 180);
+        new5_p_ctop.setBackground(new Color(52, 204, 255));
+        new5_p_ctop.setLayout(null);
+        new5_p_ctop.add(new5_header_courses);
+
+        //Copy From p_course
+
+        JPanel new5_p_courses= new JPanel();
+        new5_p_courses.setBounds(0, 0, 1920, 250);
+        new5_p_courses.setVisible(true);
+        new5_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new5_p_courses.setBackground(color);
+        new5_p_courses.setLayout(null);
+        new5_p_courses.add(new5_p_ctop);
+        new5_p_courses.add(new5_home_btn);
+        new5_p_courses.add(new5_dashboard_btn);
+        new5_p_courses.add(new5_events_btn);
+        new5_p_courses.add(new5_m_courses_btn);
+        new5_p_courses.add(new5_h_blocks_btn);
+        new5_p_courses.add(new5_s_view_btn);
+
+        // Add JFrame for Entrepreneurship
+        JFrame inner_food_legislation = new JFrame();
+        inner_food_legislation.setLayout(null);
+        inner_food_legislation.setSize(1920, 1080);
+        inner_food_legislation.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_food_legislation.setLayout(null);
+        inner_food_legislation.setLocationRelativeTo(null);
+        inner_food_legislation.setResizable(false);
+        inner_food_legislation.add(new5_p_courses);
+
+        //Show the frame when clicked
+        btn5_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_food_legislation.setVisible(true);
+            }
+        });
+
+        new5_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_food_legislation.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new5_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_food_legislation.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
 
 
 
