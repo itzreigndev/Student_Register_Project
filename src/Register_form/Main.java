@@ -1196,15 +1196,27 @@ public class Main {
 
         inner_agri.add(new_p_courses);
 
-
-
-
-
         btn_course.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fcourses.setVisible(false);
                 inner_agri.setVisible(true);
+            }
+        });
+
+        new_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri.setVisible(false);
+                fcourses.setVisible(true);
             }
         });
 
