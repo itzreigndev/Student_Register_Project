@@ -1222,6 +1222,93 @@ public class Main {
             }
         });
 
+        //Copy From s_view_btn
+
+        JButton new2_s_view_btn= new JButton(" Standard View");
+        new2_s_view_btn.setBounds(1650, 190, 200, 55);
+        new2_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_s_view_btn.setForeground(Color.white);
+        new2_s_view_btn.setBackground(color);
+        new2_s_view_btn.setBorder(null);
+        new2_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new2_h_blocks_btn= new JButton(" Hide blocks");
+        new2_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new2_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_h_blocks_btn.setForeground(Color.white);
+        new2_h_blocks_btn.setBackground(color);
+        new2_h_blocks_btn.setBorder(null);
+        new2_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new2_m_courses_btn= new JButton(" My Courses");
+        new2_m_courses_btn.setBounds(500, 190, 150, 55);
+        new2_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_m_courses_btn.setForeground(Color.white);
+        new2_m_courses_btn.setBackground(color);
+        new2_m_courses_btn.setBorder(null);
+        new2_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new2_events_btn= new JButton(" Events");
+        new2_events_btn.setBounds(350, 190, 150, 55);
+        new2_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_events_btn.setForeground(Color.white);
+        new2_events_btn.setBackground(color);
+        new2_events_btn.setBorder(null);
+        new2_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new2_dashboard_btn= new JButton(" Dashboard");
+        new2_dashboard_btn.setBounds(200, 190, 150, 55);
+        new2_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_dashboard_btn.setForeground(Color.white);
+        new2_dashboard_btn.setBackground(color);
+        new2_dashboard_btn.setBorder(null);
+        new2_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new2_home_btn= new JButton(" Home");
+        new2_home_btn.setBounds(50, 190, 150, 55);
+        new2_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_home_btn.setForeground(Color.white);
+        new2_home_btn.setBackground(color);
+        new2_home_btn.setBorder(null);
+        new2_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new2_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        new2_header_courses.setIcon(moodle_profile_pic);
+        new2_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new2_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new2_p_ctop= new JPanel();
+        new2_p_ctop.setBounds(10, 10, 1920, 180);
+        new2_p_ctop.setBackground(new Color(52, 204, 255));
+        new2_p_ctop.setLayout(null);
+        new2_p_ctop.add(new2_header_courses);
+
+        //Copy From p_course
+
+        JPanel new2_p_courses= new JPanel();
+        new2_p_courses.setBounds(0, 0, 1920, 250);
+        new2_p_courses.setVisible(true);
+        new2_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new2_p_courses.setBackground(color);
+        new2_p_courses.setLayout(null);
+        new2_p_courses.add(new2_p_ctop);
+        new2_p_courses.add(new2_home_btn);
+        new2_p_courses.add(new2_dashboard_btn);
+        new2_p_courses.add(new2_events_btn);
+        new2_p_courses.add(new2_m_courses_btn);
+        new2_p_courses.add(new2_h_blocks_btn);
+        new2_p_courses.add(new2_s_view_btn);
+
         // Add JFrame for Entrepreneurship
         JFrame inner_ent = new JFrame();
         inner_ent.setLayout(null);
@@ -1230,6 +1317,7 @@ public class Main {
         inner_ent.setLayout(null);
         inner_ent.setLocationRelativeTo(null);
         inner_ent.setResizable(false);
+        inner_ent.add(new2_p_courses);
 
         //Show the frame when clicked
         btn2_course.addActionListener(new ActionListener() {
@@ -1239,6 +1327,24 @@ public class Main {
                 inner_ent.setVisible(true);
             }
         });
+
+        new2_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_ent.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new2_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_ent.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+
 
 
     }
