@@ -1402,7 +1402,7 @@ public class Main {
 
         //Copy From header_courses
 
-        JLabel new3_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        JLabel new3_header_courses = new JLabel("   Food Market", profile, JLabel.CENTER);
         new3_header_courses.setIcon(moodle_profile_pic);
         new3_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
         new3_header_courses.setBounds(20, 10, 1400, 140);
@@ -1524,7 +1524,7 @@ public class Main {
 
         //Copy From header_courses
 
-        JLabel new4_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        JLabel new4_header_courses = new JLabel("   New Product Development", profile, JLabel.CENTER);
         new4_header_courses.setIcon(moodle_profile_pic);
         new4_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
         new4_header_courses.setBounds(20, 10, 1400, 140);
@@ -1646,7 +1646,7 @@ public class Main {
 
         //Copy From header_courses
 
-        JLabel new5_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        JLabel new5_header_courses = new JLabel("   Food Legislation", profile, JLabel.CENTER);
         new5_header_courses.setIcon(moodle_profile_pic);
         new5_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
         new5_header_courses.setBounds(20, 10, 1400, 140);
@@ -1768,7 +1768,7 @@ public class Main {
 
         //Copy From header_courses
 
-        JLabel new6_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        JLabel new6_header_courses = new JLabel("   Food Industrial Design", profile, JLabel.CENTER);
         new6_header_courses.setIcon(moodle_profile_pic);
         new6_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
         new6_header_courses.setBounds(20, 10, 1400, 140);
