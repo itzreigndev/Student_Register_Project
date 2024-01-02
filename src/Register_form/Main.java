@@ -618,6 +618,17 @@ public class Main {
         p_agri.add(btn_course);
         p_agri.add(l_ikey);
 
+        JFrame inner_agri = new JFrame();
+        inner_agri.setLayout(null);
+        inner_agri.setBounds(0, 0, 1920, 1080);
+
+        btn_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri.setVisible(true);
+            }
+        });
+
         //EntrepreneurShip
 
         ImageIcon entrepreneurship_image= new ImageIcon(Main.class.getResource("2_Entrepreneuship__1_-removebg-preview.png"));
@@ -862,6 +873,7 @@ public class Main {
 
 
         JPanel p_groupcourses= new JPanel();
+        p_groupcourses.setBounds(20, 350, 1000, 600);
         p_groupcourses.setBounds(20, 350, 1000, 600);
         p_groupcourses.setLayout(null);
 
