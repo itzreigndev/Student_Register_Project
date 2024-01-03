@@ -1200,7 +1200,7 @@ public class Main {
 
         //Agri-Food Button
         JButton agri_food_button= new JButton(">   Agri-Food Supply Chain");
-        agri_food_button.setBounds(100, 300, 300, 45);
+        agri_food_button.setBounds(150, 300, 300, 45);
         agri_food_button.setBorderPainted(false);
         agri_food_button.setContentAreaFilled(false);
         agri_food_button.setFocusPainted(false);
@@ -1359,7 +1359,7 @@ public class Main {
 
         //Agri-Food Button
         JButton ent_button= new JButton(">   Entrepreneurship");
-        ent_button.setBounds(100, 300, 300, 45);
+        ent_button.setBounds(150, 300, 300, 45);
         ent_button.setBorderPainted(false);
         ent_button.setContentAreaFilled(false);
         ent_button.setFocusPainted(false);
@@ -1512,7 +1512,7 @@ public class Main {
 
         //Food Market button
         JButton food_market_icon= new JButton(">   Food Market");
-        food_market_icon.setBounds(100, 300, 300, 45);
+        food_market_icon.setBounds(150, 300, 300, 45);
         food_market_icon.setBorderPainted(false);
         food_market_icon.setContentAreaFilled(false);
         food_market_icon.setFocusPainted(false);
@@ -1815,7 +1815,7 @@ public class Main {
 
         //Food Legislation button
         JButton food_legis_icon= new JButton(">   Food Legislation");
-        food_legis_icon.setBounds(100, 300, 300, 45);
+        food_legis_icon.setBounds(150, 300, 300, 45);
         food_legis_icon.setBorderPainted(false);
         food_legis_icon.setContentAreaFilled(false);
         food_legis_icon.setFocusPainted(false);
