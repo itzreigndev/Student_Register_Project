@@ -1189,7 +1189,7 @@ public class Main {
 
         //Folder button
         JButton btn_folder_icon= new JButton("Courses");
-        btn_folder_icon.setBounds(20, 300, 130, 45);
+        btn_folder_icon.setBounds(20, 300, 200, 45);
         btn_folder_icon.setIcon(folder_image);
         btn_folder_icon.setBorderPainted(false);
         btn_folder_icon.setContentAreaFilled(false);
@@ -1348,7 +1348,7 @@ public class Main {
 
         //Folder button
         JButton btn2_folder_icon= new JButton("Courses");
-        btn2_folder_icon.setBounds(20, 300, 130, 45);
+        btn2_folder_icon.setBounds(20, 300, 200, 45);
         btn2_folder_icon.setIcon(folder_image);
         btn2_folder_icon.setBorderPainted(false);
         btn2_folder_icon.setContentAreaFilled(false);
@@ -1501,7 +1501,7 @@ public class Main {
 
         //Folder button
         JButton btn3_folder_icon= new JButton("Courses");
-        btn3_folder_icon.setBounds(20, 300, 130, 45);
+        btn3_folder_icon.setBounds(20, 300, 200, 45);
         btn3_folder_icon.setIcon(folder_image);
         btn3_folder_icon.setBorderPainted(false);
         btn3_folder_icon.setContentAreaFilled(false);
@@ -1650,6 +1650,26 @@ public class Main {
         new4_p_courses.add(new4_h_blocks_btn);
         new4_p_courses.add(new4_s_view_btn);
 
+        //Folder button
+        JButton btn4_folder_icon= new JButton("Courses");
+        btn4_folder_icon.setBounds(20, 300, 200, 45);
+        btn4_folder_icon.setIcon(folder_image);
+        btn4_folder_icon.setBorderPainted(false);
+        btn4_folder_icon.setContentAreaFilled(false);
+        btn4_folder_icon.setFocusPainted(false);
+        btn4_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn4_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //New Product Development button
+        JButton product_dev_icon= new JButton(">   New Product Development");
+        product_dev_icon.setBounds(150, 300, 300, 45);
+        product_dev_icon.setBorderPainted(false);
+        product_dev_icon.setContentAreaFilled(false);
+        product_dev_icon.setFocusPainted(false);
+        product_dev_icon.setCursor(Cursor.getDefaultCursor());
+        product_dev_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
         // Add JFrame for New Product Development
         JFrame inner_product_dev = new JFrame();
         inner_product_dev.setLayout(null);
@@ -1659,6 +1679,8 @@ public class Main {
         inner_product_dev.setLocationRelativeTo(null);
         inner_product_dev.setResizable(false);
         inner_product_dev.add(new4_p_courses);
+        inner_product_dev.add(btn4_folder_icon);
+        inner_product_dev.add(product_dev_icon);
 
         //Show the frame when clicked
         btn4_course.addActionListener(new ActionListener() {
@@ -1666,6 +1688,14 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 fcourses.setVisible(false);
                 inner_product_dev.setVisible(true);
+            }
+        });
+
+        btn4_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_product_dev.setVisible(false);
             }
         });
 
@@ -1772,6 +1802,28 @@ public class Main {
         new5_p_courses.add(new5_h_blocks_btn);
         new5_p_courses.add(new5_s_view_btn);
 
+        //Folder button
+        JButton btn5_folder_icon= new JButton("Courses");
+        btn5_folder_icon.setBounds(20, 300, 200, 45);
+        btn5_folder_icon.setIcon(folder_image);
+        btn5_folder_icon.setBorderPainted(false);
+        btn5_folder_icon.setContentAreaFilled(false);
+        btn5_folder_icon.setFocusPainted(false);
+        btn5_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn5_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //Food Legislation button
+        JButton food_legis_icon= new JButton(">   Food Legislation");
+        food_legis_icon.setBounds(100, 300, 300, 45);
+        food_legis_icon.setBorderPainted(false);
+        food_legis_icon.setContentAreaFilled(false);
+        food_legis_icon.setFocusPainted(false);
+        food_legis_icon.setCursor(Cursor.getDefaultCursor());
+        food_legis_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+
         // Add JFrame for Food Legislation
         JFrame inner_food_legislation = new JFrame();
         inner_food_legislation.setLayout(null);
@@ -1781,6 +1833,8 @@ public class Main {
         inner_food_legislation.setLocationRelativeTo(null);
         inner_food_legislation.setResizable(false);
         inner_food_legislation.add(new5_p_courses);
+        inner_food_legislation.add(food_legis_icon);
+        inner_food_legislation.add(btn5_folder_icon);
 
         //Show the frame when clicked
         btn5_course.addActionListener(new ActionListener() {
@@ -1788,6 +1842,14 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 fcourses.setVisible(false);
                 inner_food_legislation.setVisible(true);
+            }
+        });
+
+        btn5_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_food_legislation.setVisible(false);
             }
         });
 
@@ -1894,6 +1956,26 @@ public class Main {
         new6_p_courses.add(new6_h_blocks_btn);
         new6_p_courses.add(new6_s_view_btn);
 
+        //Folder button
+        JButton btn6_folder_icon= new JButton("Courses");
+        btn6_folder_icon.setBounds(20, 300, 200, 45);
+        btn6_folder_icon.setIcon(folder_image);
+        btn6_folder_icon.setBorderPainted(false);
+        btn6_folder_icon.setContentAreaFilled(false);
+        btn6_folder_icon.setFocusPainted(false);
+        btn6_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn6_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //New Product Development button
+        JButton indus_desi_icon= new JButton(">   Food Industrial Design");
+        indus_desi_icon.setBounds(150, 300, 300, 45);
+        indus_desi_icon.setBorderPainted(false);
+        indus_desi_icon.setContentAreaFilled(false);
+        indus_desi_icon.setFocusPainted(false);
+        indus_desi_icon.setCursor(Cursor.getDefaultCursor());
+        indus_desi_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
         // Add JFrame for Food Industrial Design
         JFrame inner_indus_design = new JFrame();
         inner_indus_design.setLayout(null);
@@ -1903,6 +1985,8 @@ public class Main {
         inner_indus_design.setLocationRelativeTo(null);
         inner_indus_design.setResizable(false);
         inner_indus_design.add(new6_p_courses);
+        inner_indus_design.add(btn6_folder_icon);
+        inner_indus_design.add(indus_desi_icon);
 
         //Show the frame when clicked
         btn6_course.addActionListener(new ActionListener() {
@@ -1910,6 +1994,14 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 fcourses.setVisible(false);
                 inner_indus_design.setVisible(true);
+            }
+        });
+
+        btn6_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_indus_design.setVisible(false);
             }
         });
 
