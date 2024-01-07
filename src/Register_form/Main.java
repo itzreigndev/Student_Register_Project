@@ -530,7 +530,14 @@ public class Main {
 
         p_ctop.add(header_courses);
 
-
+        // Show Block
+        JButton show_blocks_btn= new JButton(" Show blocks");
+        show_blocks_btn.setBounds(1500, 190, 200, 55);
+        show_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        show_blocks_btn.setForeground(Color.white);
+        show_blocks_btn.setBackground(color);
+        show_blocks_btn.setBorder(null);
+        show_blocks_btn.setIcon(h_blocks);
 
 
 
@@ -933,15 +940,33 @@ public class Main {
         // Add to panel
         nav_pan.add(my_courses);
         nav_pan.add(navigation);
-        //*****************Frame 2********************
+
+
 
         h_blocks_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 nav_pan.setVisible(false);
+                h_blocks_btn.setVisible(false);
+                p_courses.add(show_blocks_btn);
+                show_blocks_btn.setVisible(true);
             }
         });
 
+        show_blocks_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nav_pan.setVisible(true);
+                show_blocks_btn.setVisible(false);
+                h_blocks_btn.setVisible(true);
+            }
+        });
+
+
+
+
+
+        //*****************Frame 2********************
 
         JFrame fcourses= new JFrame();
         fcourses.setSize(1920, 1080);
