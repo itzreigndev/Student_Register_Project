@@ -1619,7 +1619,7 @@ public class Main {
         btn2_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
 
 
-        //Agri-Food Button
+        //Entrepreneurship Button
         JButton ent_button= new JButton(">   Entrepreneurship");
         ent_button.setBounds(150, 300, 300, 45);
         ent_button.setBorderPainted(false);
@@ -1627,6 +1627,247 @@ public class Main {
         ent_button.setFocusPainted(false);
         ent_button.setCursor(Cursor.getDefaultCursor());
         ent_button.setFont(new Font("Arial", Font.BOLD, 16));
+
+        // JPanel For Entrepreneurship
+        JPanel inner_entre_courses = new JPanel();
+        inner_entre_courses.setBounds(0, 400, 1080, 1080);
+        JButton seq1_1_entre = new JButton();
+        seq1_1_entre.setText("Sequence 1.1: Presentation of Business Model");
+        seq1_1_entre.setBounds(10, 0, 500, 50);
+        seq1_1_entre.setBorderPainted(false);
+        seq1_1_entre.setContentAreaFilled(false);
+        seq1_1_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_1_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_2_entre = new JButton();
+        seq1_2_entre.setText("Sequence 1.2: CANVAS Business Model");
+        seq1_2_entre.setBounds(10, 30, 500, 50);
+        seq1_2_entre.setBorderPainted(false);
+        seq1_2_entre.setContentAreaFilled(false);
+        seq1_2_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_2_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_3_entre = new JButton();
+        seq1_3_entre.setText("Sequence 1.3: Mc Kinsey Matrix");
+        seq1_3_entre.setBounds(10, 60, 800, 50);
+        seq1_3_entre.setBorderPainted(false);
+        seq1_3_entre.setContentAreaFilled(false);
+        seq1_3_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_3_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_4_entre = new JButton();
+        seq1_4_entre.setText("Sequence 1.4: Porter Matrix");
+        seq1_4_entre.setBounds(10, 90, 800, 50);
+        seq1_4_entre.setBorderPainted(false);
+        seq1_4_entre.setContentAreaFilled(false);
+        seq1_4_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_4_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_1_entre = new JButton();
+        seq2_1_entre.setText("Sequence 2.1: Client/marketing orientation");
+        seq2_1_entre.setBounds(10, 120, 800, 50);
+        seq2_1_entre.setBorderPainted(false);
+        seq2_1_entre.setContentAreaFilled(false);
+        seq2_1_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_1_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_2_entre = new JButton();
+        seq2_2_entre.setText("Sequence 2.2: Marketing mix");
+        seq2_2_entre.setBounds(10, 150, 800, 50);
+        seq2_2_entre.setBorderPainted(false);
+        seq2_2_entre.setContentAreaFilled(false);
+        seq2_2_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_2_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_3_entre = new JButton();
+        seq2_3_entre.setText("Sequence 2.3: Branding");
+        seq2_3_entre.setBounds(10, 180, 800, 50);
+        seq2_3_entre.setBorderPainted(false);
+        seq2_3_entre.setContentAreaFilled(false);
+        seq2_3_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_3_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+
+        JButton seq3_1_entre = new JButton();
+        seq3_1_entre.setText("Sequence 3.1: Manager becomes an entrepreneur");
+        seq3_1_entre.setBounds(10, 210, 800, 50);
+        seq3_1_entre.setBorderPainted(false);
+        seq3_1_entre.setContentAreaFilled(false);
+        seq3_1_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_1_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_2_entre = new JButton();
+        seq3_2_entre.setText("Sequence 3.2: Manager/know how to surround youurself");
+        seq3_2_entre.setBounds(10, 240, 800, 50);
+        seq3_2_entre.setBorderPainted(false);
+        seq3_2_entre.setContentAreaFilled(false);
+        seq3_2_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_2_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_3_entre = new JButton();
+        seq3_3_entre.setText("Sequence 3.3: Financial/business plan's construction");
+        seq3_3_entre.setBounds(10, 270, 800, 50);
+        seq3_3_entre.setBorderPainted(false);
+        seq3_3_entre.setContentAreaFilled(false);
+        seq3_3_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_3_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_4_entre = new JButton();
+        seq3_4_entre.setText("Sequence 3.4: Financial Analysis/Income and BS Statement");
+        seq3_4_entre.setBounds(10, 300, 800, 50);
+        seq3_4_entre.setBorderPainted(false);
+        seq3_4_entre.setContentAreaFilled(false);
+        seq3_4_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_4_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        inner_entre_courses.add(seq1_1_entre);
+        inner_entre_courses.add(seq1_2_entre);
+        inner_entre_courses.add(seq1_3_entre);
+        inner_entre_courses.add(seq1_4_entre);
+        inner_entre_courses.add(seq2_1_entre);
+        inner_entre_courses.add(seq2_2_entre);
+        inner_entre_courses.add(seq2_3_entre);
+        inner_entre_courses.add(seq3_1_entre);
+        inner_entre_courses.add(seq3_2_entre);
+        inner_entre_courses.add(seq3_3_entre);
+        inner_entre_courses.add(seq3_4_entre);
+
+        seq1_1_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=568&currentorg=Course_ID1_ORG&scoid=1154&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_2_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=569&currentorg=Course_ID1_ORG&scoid=1156&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_3_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=570&currentorg=Course_ID1_ORG&scoid=1158&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_4_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=571&currentorg=Course_ID1_ORG&scoid=1160&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_1_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=572&currentorg=Course_ID1_ORG&scoid=1162&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_2_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=573&currentorg=Course_ID1_ORG&scoid=1164&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_3_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=574&currentorg=Course_ID1_ORG&scoid=1166&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+
+        seq3_1_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=575&currentorg=Course_ID1_ORG&scoid=1168&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_2_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=576&currentorg=Course_ID1_ORG&scoid=1170&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_3_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=577&currentorg=Course_ID1_ORG&scoid=1172&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_4_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=578&currentorg=Course_ID1_ORG&scoid=1174&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        inner_entre_courses.setLayout(null);
+        inner_entre_courses.setVisible(true);
+
 
         // Add JFrame for Entrepreneurship
         JFrame inner_ent = new JFrame();
@@ -1639,6 +1880,9 @@ public class Main {
         inner_ent.add(new2_p_courses);
         inner_ent.add(ent_button);
         inner_ent.add(btn2_folder_icon);
+        inner_ent.add(inner_entre_courses);
+
+
 
         //Show the frame when clicked
         btn2_course.addActionListener(new ActionListener() {
