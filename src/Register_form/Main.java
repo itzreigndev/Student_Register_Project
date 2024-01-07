@@ -998,7 +998,6 @@ public class Main {
                 String telegram= ttelegram.getText();
                 Object row[]={N,name, dob, gender, address, phone, email, telegram};
                 model.addRow(row);
-                fmain.setVisible(false);
             }
         });
 
