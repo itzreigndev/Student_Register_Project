@@ -1206,6 +1206,121 @@ public class Main {
         agri_food_button.setCursor(Cursor.getDefaultCursor());
         agri_food_button.setFont(new Font("Arial", Font.BOLD, 16));
 
+        // JPanel For Agri_Food
+        JPanel inner_agri_courses = new JPanel();
+        inner_agri_courses.setBounds(0, 400, 1080, 1080);
+        JButton seq1_1 = new JButton();
+        seq1_1.setText("Sequence 1.1: Standard definition of food supply chain (FSC)");
+        seq1_1.setBounds(10, 0, 500, 50);
+        seq1_1.setBorderPainted(false);
+        seq1_1.setContentAreaFilled(false);
+        seq1_1.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_1.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_2 = new JButton();
+        seq1_2.setText("Sequence 1.2: The sustainable issue of FSC");
+        seq1_2.setBounds(10, 30, 500, 50);
+        seq1_2.setBorderPainted(false);
+        seq1_2.setContentAreaFilled(false);
+        seq1_2.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_2.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_3 = new JButton();
+        seq1_3.setText("Sequence 1.3: Innovative FSC based on the principles of bioeconomy and circular economy");
+        seq1_3.setBounds(10, 60, 800, 50);
+        seq1_3.setBorderPainted(false);
+        seq1_3.setContentAreaFilled(false);
+        seq1_3.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_3.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_4 = new JButton();
+        seq1_4.setText("Sequence 1.4: Case studies of bioeconomy/circular economy projects in Cambodia");
+        seq1_4.setBounds(10, 90, 800, 50);
+        seq1_4.setBorderPainted(false);
+        seq1_4.setContentAreaFilled(false);
+        seq1_4.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_4.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_1 = new JButton();
+        seq2_1.setText("Sequence 2.1: Economic analysis of contracts in a FSC");
+        seq2_1.setBounds(10, 120, 800, 50);
+        seq2_1.setBorderPainted(false);
+        seq2_1.setContentAreaFilled(false);
+        seq2_1.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_1.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_2 = new JButton();
+        seq2_2.setText("Sequence 2.2: Inter-firm contractual relationship");
+        seq2_2.setBounds(10, 150, 800, 50);
+        seq2_2.setBorderPainted(false);
+        seq2_2.setContentAreaFilled(false);
+        seq2_2.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_2.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_3 = new JButton();
+        seq2_3.setText("Sequence 2.3: The global value chain approach");
+        seq2_3.setBounds(10, 180, 800, 50);
+        seq2_3.setBorderPainted(false);
+        seq2_3.setContentAreaFilled(false);
+        seq2_3.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_3.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_4 = new JButton();
+        seq2_4.setText("Sequence 2.4: Apply GVC Framework to Cambodian Cases");
+        seq2_4.setBounds(10, 210, 800, 50);
+        seq2_4.setBorderPainted(false);
+        seq2_4.setContentAreaFilled(false);
+        seq2_4.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_4.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_1 = new JButton();
+        seq3_1.setText("Sequence 3.1: Introduction to Design Thinking");
+        seq3_1.setBounds(10, 240, 800, 50);
+        seq3_1.setBorderPainted(false);
+        seq3_1.setContentAreaFilled(false);
+        seq3_1.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_1.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_2 = new JButton();
+        seq3_2.setText("Sequence 3.2: Applying Design Thinking to improve existing agri-food supply chains");
+        seq3_2.setBounds(10, 270, 800, 50);
+        seq3_2.setBorderPainted(false);
+        seq3_2.setContentAreaFilled(false);
+        seq3_2.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_2.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_3 = new JButton();
+        seq3_3.setText("Sequence 3.3: Application 1: Improving the sustainability of an agrifood business within a FSC");
+        seq3_3.setBounds(10, 300, 800, 50);
+        seq3_3.setBorderPainted(false);
+        seq3_3.setContentAreaFilled(false);
+        seq3_3.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_3.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_4 = new JButton();
+        seq3_4.setText("Sequence 3.4: Development of an AgriFood business within a circular economy");
+        seq3_4.setBounds(10, 330, 800, 50);
+        seq3_4.setBorderPainted(false);
+        seq3_4.setContentAreaFilled(false);
+        seq3_4.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_4.setHorizontalAlignment(SwingConstants.LEFT);
+
+        inner_agri_courses.add(seq1_1);
+        inner_agri_courses.add(seq1_2);
+        inner_agri_courses.add(seq1_3);
+        inner_agri_courses.add(seq1_4);
+        inner_agri_courses.add(seq2_1);
+        inner_agri_courses.add(seq2_2);
+        inner_agri_courses.add(seq2_3);
+        inner_agri_courses.add(seq2_4);
+        inner_agri_courses.add(seq3_1);
+        inner_agri_courses.add(seq3_2);
+        inner_agri_courses.add(seq3_3);
+        inner_agri_courses.add(seq3_4);
+
+        inner_agri_courses.setLayout(null);
+        inner_agri_courses.setVisible(true);
+
 
 
         //New JFrame for Agri_Food course
@@ -1223,6 +1338,7 @@ public class Main {
         inner_agri.getContentPane().add(new_p_courses);
         inner_agri.add(btn_folder_icon);
         inner_agri.add(agri_food_button);
+        inner_agri.add(inner_agri_courses);
 
         //Show the Frame when clicked
         btn_course.addActionListener(new ActionListener() {
