@@ -11,6 +11,9 @@ import javax.swing.border.LineBorder;
 import java.io.File;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class Main {
 
@@ -1317,6 +1320,150 @@ public class Main {
         inner_agri_courses.add(seq3_2);
         inner_agri_courses.add(seq3_3);
         inner_agri_courses.add(seq3_4);
+
+        seq1_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=533&currentorg=Course_ID1_ORG&scoid=1084&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=534&currentorg=Course_ID1_ORG&scoid=1086&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=535&currentorg=Course_ID1_ORG&scoid=1088&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=536&currentorg=Course_ID1_ORG&scoid=1090&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=537&currentorg=Course_ID1_ORG&scoid=1092&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=538&currentorg=Course_ID1_ORG&scoid=1094&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=539&currentorg=Course_ID1_ORG&scoid=1096&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=540&currentorg=Course_ID1_ORG&scoid=1098&sesskey=tZC85Ik3ls&display=popup&mode=normal&mode=normal");
+                    Desktop.getDesktop().browse(uri2_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=541&currentorg=Course_ID1_ORG&scoid=1100&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=542&currentorg=Course_ID1_ORG&scoid=1102&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=543&currentorg=Course_ID1_ORG&scoid=1104&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=544&currentorg=Course_ID1_ORG&scoid=1106&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
         inner_agri_courses.setLayout(null);
         inner_agri_courses.setVisible(true);
