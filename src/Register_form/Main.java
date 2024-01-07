@@ -911,8 +911,36 @@ public class Main {
         fmain.add(pmain);
         fmain.add(pheader);
 
+
+        // Navigation for Frame2
+
+        JPanel nav_pan = new JPanel();
+        nav_pan.setBounds(1000, 0, 920, 1080);
+        nav_pan.setBackground(Color.BLUE);
+        nav_pan.setVisible(true);
+        nav_pan.setLayout(null);
+        JLabel navigation = new JLabel();
+        navigation.setText("Navigation");
+        navigation.setBounds(80, 250, 500, 50);
+        navigation.setFont(new Font("Aria", Font.BOLD, 30));
+        navigation.setForeground(Color.WHITE);
+        JLabel my_courses = new JLabel();
+        my_courses.setText("     My Courses");
+        my_courses.setBounds(80, 300, 500, 50);
+        my_courses.setFont(new Font("Aria", Font.BOLD, 24));
+        my_courses.setForeground(color.WHITE);
+
+        // Add to panel
+        nav_pan.add(my_courses);
+        nav_pan.add(navigation);
         //*****************Frame 2********************
 
+        h_blocks_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nav_pan.setVisible(false);
+            }
+        });
 
 
         JFrame fcourses= new JFrame();
@@ -928,6 +956,7 @@ public class Main {
         fcourses.add(btn_go);
         fcourses.add(lcourses);
         fcourses.add(p_groupcourses);
+        fcourses.add(nav_pan);
 
 
         //****************************************************Behavoir
