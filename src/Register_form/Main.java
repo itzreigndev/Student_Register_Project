@@ -1528,18 +1528,39 @@ public class Main {
         JPanel pay_pan = new JPanel();
         pay_pan.setLayout(null);
         pay_pan.setBounds(0, 500, 1920, 1080);
+        JLabel license_label = new JLabel();
+        license_label.setBounds(570, 50, 800, 50);
+        license_label.setText("If you have already paid enter the license here");
+        license_label.setFont(new Font("Arial", Font.BOLD, 24));
+        license_label.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JTextField pay_license = new JTextField();
+        pay_license.setBounds(800, 100, 300, 50);
+        pay_license.setHorizontalAlignment(SwingConstants.CENTER);
+        pay_license.setFont(new Font("Arial", Font.BOLD, 24));
+
+        JButton license_btn = new JButton();
+        license_btn.setBounds(1100, 100, 100, 50);
+        license_btn.setText("Enter");
+        license_btn.setFont(new Font("Arial", Font.BOLD, 24));
+
+
         JLabel pay_label = new JLabel();
         pay_label.setText("Please Pay Before Accessing The Course");
-        pay_label.setBounds(750, 100, 500, 50);
+        pay_label.setBounds(750, 200, 500, 50);
         pay_label.setFont(new Font("Arial", Font.BOLD, 24));
         JButton pay_btn = new JButton();
         pay_btn.setText("Pay Here");
-        pay_btn.setBounds(880, 150, 150, 50);
+        pay_btn.setBounds(880, 250, 150, 50);
 
 
         //Add To Pay Panel
         pay_pan.add(pay_label);
         pay_pan.add(pay_btn);
+        pay_pan.add(pay_license);
+        pay_pan.add(license_label);
+        pay_pan.add(license_btn);
+
 
         //Pay Button Behavoir
         pay_btn.addActionListener(new ActionListener() {
