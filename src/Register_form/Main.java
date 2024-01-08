@@ -1577,6 +1577,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String license_number = pay_license.getText();
+                pay_license.setText("");
                 if (license_number.equals("001")) {
                     inner_agri_courses.setVisible(true);
                     pay_pan.setVisible(false);
@@ -2038,6 +2039,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String license_number_2 = pay_license_2.getText();
+                pay_license_2.setText("");
                 if (license_number_2.equals("001")) {
                     inner_entre_courses.setVisible(true);
                     pay_pan_2.setVisible(false);
