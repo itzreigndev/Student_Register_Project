@@ -1,6 +1,4 @@
-
 package Register_form;
-//import com.sun.jdi.connect.spi.Connection;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,200 +9,16 @@ import javax.swing.table.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-//Database
-import java.awt.Image;
-import java.io.File;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-public class Main extends javax.swing.JFrame{
-    static boolean firstTime = true;
+public class Main {
 
-    //Code database
-
-//        PreparedStatement ps;
-//        ResultSet r;
-//        String sql;
-//
-//        public void GetDataFromDb(){
-//            try {
-//                sql="Select *From student_register";
-//                ps=connection().prepareStatement(sql);
-//                r=  ps.executeQuery();
-//            } catch (Exception e) {
-//            }
-//        }
-//
-//        Connection connection(){
-//        Connection con = null;
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/db8-12","root","");
-//            System.out.println("Completed.....");
-//        } catch (ClassNotFoundException | SQLException e) {
-//            System.err.println("Connection Error: "+e.getMessage());
-//        }
-//        return con;}
-
-
-    public static void main(String[] args) throws SQLException {
-
-        //Login Frame
-
-        JFrame flogin= new JFrame();
-        Font font_login= new Font("Arial", Font.BOLD, 18);
-
-        ImageIcon background = new ImageIcon(Main.class.getResource("background_login.jpg"));
-        Image background_logo = background.getImage().getScaledInstance(1540, 900, Image.SCALE_DEFAULT);
-
-        ImageIcon backgroundlogo = new ImageIcon(background_logo);
-
-        JLabel background_label = new JLabel("", background, JLabel.CENTER);
-        background_label.setIcon(backgroundlogo);
-        background_label.setFont(font_login);
-        background_label.setBounds(0, 0, 1540, 900);
-
-
-
-        JLabel login_label= new JLabel("Login");
-        login_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
-        login_label.setBounds(200, 20, 100, 30);
-
-        JLabel username_label= new JLabel("User name");
-        username_label.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
-        username_label.setBounds(30, 70, 100, 20);
-        username_label.setForeground(new Color(203,200,200));
-
-        JTextField txt_username= new JTextField();
-        txt_username.setFont(new Font("Arial",Font.BOLD, 18));
-        Border border= BorderFactory.createLineBorder(new Color(203,200,200), 1);
-        txt_username.setBorder(border);
-        txt_username.setBounds(30, 100, 400, 40);
-        txt_username.setForeground(Color.black);
-
-        JLabel password_label= new JLabel("Password");
-        password_label.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
-        password_label.setBounds(30, 150, 100, 20);
-        password_label.setForeground(new Color(203,200,200));
-
-        JTextField txt_password= new JTextField();
-        txt_password.setFont(new Font("Arial",Font.BOLD, 18));
-        txt_password.setBorder(border);
-        txt_password.setBounds(30, 180, 400, 40);
-        txt_password.setForeground(Color.black);
-
-
-        JLabel forget_label= new JLabel("Forgot password?");
-        forget_label.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
-        forget_label.setBounds(300, 230, 200, 20);
-        forget_label.setForeground(new Color(169,163,163));
-
-        JButton btn_login= new JButton("Login");
-        btn_login.setForeground(Color.white);
-        btn_login.setBounds(50, 270, 350, 40);
-        btn_login.setBackground(new Color(140, 255, 140));
-        btn_login.setBorder(null);
-
-        //Button login
-
-        btn_login.addMouseListener(new MouseAdapter(){
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                btn_login.setBackground(Color.green);
-            }
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_login.setBackground(Color.blue);
-            }
-
-        });
-
-        JLabel signup_label= new JLabel("Not a member? Sign up with");
-        signup_label.setBounds(110, 340, 300, 30);
-        signup_label.setForeground(Color.red);
-        signup_label.setFont(font_login);
-
-        ImageIcon facebook = new ImageIcon(Main.class.getResource("icons8-facebook-48.jpg"));
-        Image facebook_logo = facebook.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-
-        ImageIcon facebooklogo = new ImageIcon(facebook_logo);
-
-        JLabel facebook_label = new JLabel("", facebook, JLabel.CENTER);
-        facebook_label.setIcon(facebooklogo);
-        facebook_label.setBounds(110, 400, 40,40);
-
-
-
-        ImageIcon google = new ImageIcon(Main.class.getResource("icons8-google-48.jpg"));
-        Image google_logo = google.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-
-        ImageIcon googlelogo = new ImageIcon(google_logo);
-
-        JLabel google_label = new JLabel("", google, JLabel.CENTER);
-        google_label.setIcon(googlelogo);
-        google_label.setBounds(200, 400, 40, 40);
-
-        ImageIcon twitter = new ImageIcon(Main.class.getResource("icons8-twitter-48.jpg"));
-        Image twitter_logo = twitter.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
-
-        ImageIcon twitterlogo = new ImageIcon(twitter_logo);
-
-        JLabel twitter_label = new JLabel("", twitter, JLabel.CENTER);
-        twitter_label.setIcon(twitterlogo);
-        twitter_label.setBounds(290, 400, 40, 40);
-
-
-
-        JPanel p_containlogin= new JPanel();
-        p_containlogin.setVisible(true);
-        p_containlogin.setBounds(520, 100,470, 500);
-        p_containlogin.setBackground(Color.white);
-        p_containlogin.setLayout(null);
-
-        p_containlogin.add(login_label);
-        p_containlogin.add(username_label);
-        p_containlogin.add(txt_username);
-        p_containlogin.add(password_label);
-        p_containlogin.add(txt_password);
-        p_containlogin.add(forget_label);
-        p_containlogin.add(btn_login);
-        p_containlogin.add(signup_label);
-        p_containlogin.add(facebook_label);
-        p_containlogin.add(google_label);
-        p_containlogin.add(twitter_label);
-
-        background_label.add(p_containlogin);
-
-        JPanel p_login= new JPanel();
-        p_login.setSize(1540, 900);
-        p_login.setVisible(true);
-
-
-        p_login.add(background_label);
-
-
-        flogin.setSize(1540, 900);
-        flogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        flogin.setLocationRelativeTo(null);
-        flogin.setResizable(false);
-        flogin.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        flogin.setBackground(Color.cyan);
-        flogin.setVisible(true);
-
-        flogin.add(p_login);
-
+    public static void main(String[] args) {
         JFrame fmain= new JFrame();
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-YYYY");
 
         Font font= new Font("Time New Roman", Font.BOLD, 20);
         //Header
@@ -217,10 +31,6 @@ public class Main extends javax.swing.JFrame{
         headerLabel.setIcon(itc_logo);
         headerLabel.setFont(new Font("Time New Roman", Font.BOLD, 40));
         headerLabel.setBounds(20, 5, 100, 100);
-
-        //User account
-
-        //**************************************************************************
 
 
 
@@ -414,13 +224,13 @@ public class Main extends javax.swing.JFrame{
         ImageIcon next_img= new ImageIcon(imagenext);
 
 
-        JButton btn_next= new JButton("Next");
-        btn_next.setBounds(520, 580, 130, 45);
-        btn_next.setIcon(next_img);
-        btn_next.setFont(new Font("Times New Roman", Font.BOLD, 22));
-        btn_next.setBorder(new LineBorder(Color.red, 2));
-        btn_next.setBackground(Color.black);
-        btn_next.setForeground(Color.white);
+        JButton btn_folder= new JButton("Next");
+        btn_folder.setBounds(520, 580, 130, 45);
+        btn_folder.setIcon(next_img);
+        btn_folder.setFont(new Font("Times New Roman", Font.BOLD, 22));
+        btn_folder.setBorder(new LineBorder(Color.red, 2));
+        btn_folder.setBackground(Color.black);
+        btn_folder.setForeground(Color.white);
 
 
 
@@ -514,7 +324,7 @@ public class Main extends javax.swing.JFrame{
         p_rightside.add(btn_add);
         p_rightside.add(btn_clear);
         p_rightside.add(btn_exit);
-        p_rightside.add(btn_next);
+        p_rightside.add(btn_folder);
 
 
 
@@ -593,14 +403,6 @@ public class Main extends javax.swing.JFrame{
         model.addRow(row4);
         Object row5[]={n++, "Tom", "Sep 31 1999", "Male", "Kratie", "066 666 666", "x,nvnxb@gmail.com", "021 34 34 55"};
         model.addRow(row5);
-        Object row6[]={n++, "Kratos", "Oct 07 1984", "Male", "Phnom Penh", "019 222 22 22", "kratos@gmail.com", "019 222 22 22"};
-        model.addRow(row6);
-        Object row7[]={n++, "Angela", "Jun 11 2001", "Female", "Prey Veng", "011 111 111", "Angela@gmail.com", "012 345 543"};
-        model.addRow(row7);
-        Object row8[]={n++, "Vannda", "Oct 07 1984", "Male", "Phnom Penh", "011 000 0001", "vannda@gmail.com", "011 000 0001"};
-        model.addRow(row8);
-        Object row9[]={n++, "Panha", "Aug 11 2000", "Male", "Phnom Penh", "", "Panha@gmail.com", "011 000 0001"};
-        model.addRow(row9);
         JPanel p_update= new JPanel();
         p_update.setLayout(null);
         p_update.setBorder(new LineBorder(Color.black, 4));
@@ -701,7 +503,7 @@ public class Main extends javax.swing.JFrame{
         ImageIcon h_blocks= new ImageIcon(h_blocksi);
 
         JButton h_blocks_btn= new JButton(" Hide blocks");
-        h_blocks_btn.setBounds(1050, 190, 150, 55);
+        h_blocks_btn.setBounds(1500, 190, 150, 55);
         h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
         h_blocks_btn.setForeground(Color.white);
         h_blocks_btn.setBackground(color);
@@ -713,7 +515,7 @@ public class Main extends javax.swing.JFrame{
         ImageIcon s_view= new ImageIcon(s_viewi);
 
         JButton s_view_btn= new JButton(" Standard View");
-        s_view_btn.setBounds(1250, 190, 200, 55);
+        s_view_btn.setBounds(1650, 190, 200, 55);
         s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
         s_view_btn.setForeground(Color.white);
         s_view_btn.setBackground(color);
@@ -722,18 +524,25 @@ public class Main extends javax.swing.JFrame{
 
 
         JPanel p_ctop= new JPanel();
-        p_ctop.setBounds(10, 10, 1460, 180);
+        p_ctop.setBounds(10, 10, 1920, 180);
         p_ctop.setBackground(new Color(52, 204, 255));
         p_ctop.setLayout(null);
 
         p_ctop.add(header_courses);
 
-
+        // Show Block
+        JButton show_blocks_btn= new JButton(" Show blocks");
+        show_blocks_btn.setBounds(1470, 190, 200, 55);
+        show_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        show_blocks_btn.setForeground(Color.white);
+        show_blocks_btn.setBackground(color);
+        show_blocks_btn.setBorder(null);
+        show_blocks_btn.setIcon(h_blocks);
 
 
 
         JPanel p_courses= new JPanel();
-        p_courses.setBounds(0, 0, 1480, 250);
+        p_courses.setBounds(0, 0, 1920, 250);
         p_courses.setVisible(true);
         p_courses.setBorder(new LineBorder(Color.cyan, 2));
         p_courses.setBackground(color);
@@ -818,6 +627,7 @@ public class Main extends javax.swing.JFrame{
         p_agri.add(l_agri);
         p_agri.add(btn_course);
         p_agri.add(l_ikey);
+
 
         //EntrepreneurShip
 
@@ -1063,7 +873,7 @@ public class Main extends javax.swing.JFrame{
 
 
         JPanel p_groupcourses= new JPanel();
-        p_groupcourses.setBounds(20, 350, 1000, 600);
+        p_groupcourses.setBounds(20, 350, 920, 600);
         p_groupcourses.setLayout(null);
 
         p_groupcourses.add(p_agri);
@@ -1095,9 +905,7 @@ public class Main extends javax.swing.JFrame{
         pheader.setBorder(new LineBorder(Color.yellow, 2));
         pheader.add(headerLabel);
 
-
-        //Change here
-        fmain.setVisible(false);
+        fmain.setVisible(true);
         fmain.setSize(1540, 800);
         fmain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fmain.setLocationRelativeTo(null);
@@ -1109,34 +917,61 @@ public class Main extends javax.swing.JFrame{
         fmain.add(pmain);
         fmain.add(pheader);
 
-        //*****************Frame 2********************\
+
+        // Navigation for Frame2
+
+        JPanel nav_pan = new JPanel();
+        nav_pan.setBounds(1000, 0, 920, 1080);
+        nav_pan.setBackground(Color.BLUE);
+        nav_pan.setVisible(true);
+        nav_pan.setLayout(null);
+        JLabel navigation = new JLabel();
+        navigation.setText("Navigation");
+        navigation.setBounds(80, 250, 500, 50);
+        navigation.setFont(new Font("Aria", Font.BOLD, 30));
+        navigation.setForeground(Color.WHITE);
+        JButton my_courses = new JButton();
+        my_courses.setText("     My Courses");
+        my_courses.setBounds(80, 300, 500, 50);
+        my_courses.setFont(new Font("Aria", Font.BOLD, 24));
+        my_courses.setForeground(color.WHITE);
+        my_courses.setBorderPainted(false);
+        my_courses.setHorizontalAlignment(SwingConstants.LEFT);
+        my_courses.setContentAreaFilled(false);
+
+        // Add to panel
+        nav_pan.add(my_courses);
+        nav_pan.add(navigation);
 
 
-        ImageIcon rs_minusbar_design_image= new ImageIcon(Main.class.getResource("icons8-top-header-grid-sections-parting-square-bars-48.jpg"));
-        Image rs_minusbar_designi= rs_minusbar_design_image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-        ImageIcon rs_minusbar_design= new ImageIcon(rs_minusbar_designi);
+
+        h_blocks_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nav_pan.setVisible(false);
+                h_blocks_btn.setVisible(false);
+                p_courses.add(show_blocks_btn);
+                show_blocks_btn.setVisible(true);
+            }
+        });
+
+        show_blocks_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nav_pan.setVisible(true);
+                show_blocks_btn.setVisible(false);
+                h_blocks_btn.setVisible(true);
+            }
+        });
 
 
-        JLabel l_irs_minusbar_design= new JLabel();
-        l_irs_minusbar_design.setIcon(rs_minusbar_design);
-        l_irs_minusbar_design.setBounds(10, 50, 450, 40);
-        l_irs_minusbar_design.setText("Navigation");
-        l_irs_minusbar_design.setFont(new Font("Arial", Font.BOLD, 32));
-
-        JPanel p_rs_courses= new JPanel();
-        p_rs_courses.setBounds(1030, 150, 450, 650);
-        p_rs_courses.setBackground(color);
-        p_rs_courses.setLayout(null);
-        p_rs_courses.setVisible(true);
 
 
-        //Contain element in Panel right side courses
-        p_rs_courses.add(l_irs_minusbar_design);
 
-
+        //*****************Frame 2********************
 
         JFrame fcourses= new JFrame();
-        fcourses.setSize(1540, 900);
+        fcourses.setSize(1920, 1080);
         fcourses.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fcourses.setLayout(null);
         fcourses.setLocationRelativeTo(null);
@@ -1148,28 +983,14 @@ public class Main extends javax.swing.JFrame{
         fcourses.add(btn_go);
         fcourses.add(lcourses);
         fcourses.add(p_groupcourses);
-        fcourses.add(p_rs_courses);
+        fcourses.add(nav_pan);
+
 
         //****************************************************Behavoir
 
-        //Database code
-
-
-        //Button login
-        btn_login.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!txt_username.getText().equals("") && !txt_password.getText().equals("")){
-                    fmain.setVisible(true);
-                }
-            }
-
-        });
-
         //button next
 
-
-        btn_next.addActionListener(new ActionListener(){
+        btn_folder.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 fcourses.setVisible(true);
@@ -1177,14 +998,16 @@ public class Main extends javax.swing.JFrame{
             }
         });
 
-        btn_next.addMouseListener(new MouseAdapter(){
+        btn_folder.addMouseListener(new MouseAdapter(){
+
             @Override
             public void mouseEntered(MouseEvent e) {
-                btn_next.setBackground(Color.GREEN);
+                btn_folder.setBackground(Color.GREEN);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_next.setBackground(Color.red);
+                btn_folder.setBackground(Color.red);
             }
+
         });
 
 
@@ -1213,33 +1036,27 @@ public class Main extends javax.swing.JFrame{
             }
         });
 
-        //Button add
+
+        //Button Add
+
         btn_add.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    String name= tname.getText();
-                    String dob= ((JTextField) date.getDateEditor().getUiComponent()).getText();
-                    String gender;
-                    if(b_male.isSelected()){
-                        gender= "Male";
-                    }else{
-                        gender= "Female";
-                    }
-                    String address=combo_Address.getSelectedItem().toString();
-                    String phone= tphone.getText();
-                    String email= temail.getText();
-                    String telegram= ttelegram.getText();
-                    int id=9;
-                    for(int i=0; i<tb.getRowCount(); i++){
-                        id= Integer.parseInt(tb.getValueAt(i, 0).toString());
-                    }
-                    id++;
-                    Object row[]={id,name, dob, gender, address, phone, email, telegram};
-                    model.addRow(row);
-                } catch (Exception t) {
-                    JOptionPane.showMessageDialog(null, e);
+                int N=6;
+                String name= tname.getText();
+                String dob= ((JTextField) date.getDateEditor().getUiComponent()).getText();
+                String gender;
+                if(b_male.isSelected()){
+                    gender= "Male";
+                }else{
+                    gender= "Female";
                 }
+                String address=combo_Address.getSelectedItem().toString();
+                String phone= tphone.getText();
+                String email= temail.getText();
+                String telegram= ttelegram.getText();
+                Object row[]={N,name, dob, gender, address, phone, email, telegram};
+                model.addRow(row);
             }
         });
 
@@ -1292,7 +1109,6 @@ public class Main extends javax.swing.JFrame{
                 }
                 if(checkStudent==false){
                     JOptionPane.showMessageDialog(null, "Student not found..!");
-
                 }
             }
         });
@@ -1302,7 +1118,6 @@ public class Main extends javax.swing.JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 int row = tb.getSelectedRow();
-                System.out.println(row);
                 for(int i=0; i<model.getRowCount();i++){
                     DefaultTableModel model = (DefaultTableModel)tb.getModel();
                     int result=JOptionPane.showConfirmDialog(null, "Are you sure?");
@@ -1319,146 +1134,1522 @@ public class Main extends javax.swing.JFrame{
 
         });
 
-        //mouse click table
-//        tb.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-//            @Override
-//            public void valueChanged(ListSelectionEvent event) {
-//                if(!event.getValueIsAdjusting()){
-//                    int row= tb.getSelectedRow();
-//                    DefaultTableModel model= (DefaultTableModel)tb.getModel();
-//                    tname.setText(model.getValueAt(row, 1).toString());
-//                    try {
-//                        Date date1= (Date) tb.getValueAt(row, 2);
-//                        date.setDate(date1);
-//                    } catch (Exception e) {
-//                    }
-//                    String gender= model.getValueAt(row, 3).toString();
-//                    if(gender.equals("Male")){
-//                        b_male.setSelected(true);
-//                    }else{
-//                        b_female.setSelected(true);
-//                    }
-//                    combo_Address.setSelectedItem(model.getValueAt(row, 4));
-//                    tphone.setText(model.getValueAt(row, 5).toString());
-//                    temail.setText(model.getValueAt(row, 6).toString());
-//                    ttelegram.setText(model.getValueAt(row, 7).toString());
-//                }
-//            }
-//        });
         //Update Button
-        JButton btn_update1= new JButton("Update");
-        btn_update1.setBounds(200, 580, 200, 50);
-        btn_update1.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-        btn_update1.setBackground(new Color(255, 0, 127));
-        btn_update1.setForeground(Color.white);
-        btn_update1.setFont(new Font("Times New Roman", Font.BOLD, 22));
-        btn_update1.setVisible(false);
-        p_rightside.add(btn_update1);
-
-        //Button Update
-        btn_update.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tabbedPane.setSelectedIndex(0);
-                btn_add.setVisible(false);
-                btn_clear.setVisible(false);
-                btn_exit.setVisible(false);
-                btn_next.setVisible(false);
-                btn_update1.setVisible(true);
-//        tb.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
-//            @Override
-//            public void valueChanged(ListSelectionEvent event) {
-//                if(!event.getValueIsAdjusting()){
-//                    int row= tb.getSelectedRow();
-//                    DefaultTableModel model= (DefaultTableModel)tb.getModel();
-//                    tname.setText(model.getValueAt(row, 1).toString());
-//                    try {
-//                        Date date1= (Date) tb.getValueAt(row, 2);
-//                        date.setDate(date1);
-//                    } catch (Exception e) {
-//                    }
-//                    String gender= model.getValueAt(row, 3).toString();
-//                    if(gender.equals("Male")){
-//                        b_male.setSelected(true);
-//                    }else{
-//                        b_female.setSelected(true);
-//                    }
-//                    combo_Address.setSelectedItem(model.getValueAt(row, 4));
-//                    tphone.setText(model.getValueAt(row, 5).toString());
-//                    temail.setText(model.getValueAt(row, 6).toString());
-//                    ttelegram.setText(model.getValueAt(row, 7).toString());
-//                }
-//            }
-//        });
 
 
-            }
-        });
-
-        btn_update1.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String name=tname.getText();
-                    String dob;
-                    if (date.getDate() == null) {
-                        date.setDate(new Date());
-                    }
-                    dob = sdf.format(date.getDate());
-                    String gender;
-                    if(b_male.isSelected()){
-                        gender="Male";
-                    }
-                    else{
-                        gender="Female";
-                    }
-                    String currentAddress= combo_Address.getSelectedItem().toString();
-                    String phoneNumber= tphone.getText();
-                    String email= temail.getText();
-                    String telegramNumber= ttelegram.getText();
-                    int row= tb.getSelectedRow();
-                    DefaultTableModel model= (DefaultTableModel)tb.getModel();
-                    model.setValueAt(row+1, row,0);
-                    model.setValueAt(name, row, 1);
-                    model.setValueAt(dob, row, 2);
-                    model.setValueAt(gender, row, 3);
-                    model.setValueAt(currentAddress, row, 4);
-                    model.setValueAt(phoneNumber, row, 5);
-                    model.setValueAt(email, row, 6);
-                    model.setValueAt(telegramNumber, row, 7);
-                    JOptionPane.showMessageDialog(null, "Update successfully");
-                    btn_update1.setVisible(false);
-                    btn_clear.setVisible(true);
-                    btn_exit.setVisible(true);
-                    btn_add.setVisible(true);
-                    btn_next.setVisible(true);
-                } catch (Exception t) {
-                    t.printStackTrace();
-                }
-            }
-        });
 
         //Click tabbedpane
         tabbedPane.addChangeListener(new ChangeListener(){
             @Override
             public void stateChanged(ChangeEvent e) {
                 String pw= "12345";
-                int selectIndex=tabbedPane.getSelectedIndex();
-                if(selectIndex==1 ){
-                    if(firstTime){
-                        String user_pw=JOptionPane.showInputDialog(null, "Input Pasword: ");
-                        if(!user_pw.equals(pw)){
-                            fmain.dispose();
-                        }else{
-                            p_admin.add(p_atop);
-                            p_admin.add(p_update);
-                        }
-                        firstTime=false;
-                    }
-
+                String user_pw=JOptionPane.showInputDialog(null, "Input Pasword: ");
+                if(!user_pw.equals(pw)){
+                    fmain.dispose();
+                }else{
+                    p_admin.add(p_atop);
+                    p_admin.add(p_update);
                 }
             }
 
         });
+        //Copy From s_view_btn
+
+        JButton new_s_view_btn= new JButton(" Standard View");
+        new_s_view_btn.setBounds(1650, 190, 200, 55);
+        new_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new_s_view_btn.setForeground(Color.white);
+        new_s_view_btn.setBackground(color);
+        new_s_view_btn.setBorder(null);
+        new_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new_h_blocks_btn= new JButton(" Hide blocks");
+        new_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new_h_blocks_btn.setForeground(Color.white);
+        new_h_blocks_btn.setBackground(color);
+        new_h_blocks_btn.setBorder(null);
+        new_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new_m_courses_btn= new JButton(" My Courses");
+        new_m_courses_btn.setBounds(500, 190, 150, 55);
+        new_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new_m_courses_btn.setForeground(Color.white);
+        new_m_courses_btn.setBackground(color);
+        new_m_courses_btn.setBorder(null);
+        new_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new_events_btn= new JButton(" Events");
+        new_events_btn.setBounds(350, 190, 150, 55);
+        new_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new_events_btn.setForeground(Color.white);
+        new_events_btn.setBackground(color);
+        new_events_btn.setBorder(null);
+        new_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new_dashboard_btn= new JButton(" Dashboard");
+        new_dashboard_btn.setBounds(200, 190, 150, 55);
+        new_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new_dashboard_btn.setForeground(Color.white);
+        new_dashboard_btn.setBackground(color);
+        new_dashboard_btn.setBorder(null);
+        new_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new_home_btn= new JButton(" Home");
+        new_home_btn.setBounds(50, 190, 150, 55);
+        new_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new_home_btn.setForeground(Color.white);
+        new_home_btn.setBackground(color);
+        new_home_btn.setBorder(null);
+        new_home_btn.setIcon(home);
+
+        //Copy From header_courses
+        
+        JLabel new_header_courses = new JLabel("   Agri-Food Supply Chain", profile, JLabel.CENTER);
+        new_header_courses.setIcon(moodle_profile_pic);
+        new_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new_header_courses.setBounds(20, 10, 1400, 140);
+        
+        //Copy From p_ctop
+
+        JPanel new_p_ctop= new JPanel();
+        new_p_ctop.setBounds(10, 10, 1920, 180);
+        new_p_ctop.setBackground(new Color(52, 204, 255));
+        new_p_ctop.setLayout(null);
+        new_p_ctop.add(new_header_courses);
+
+        //Copy From p_course
+
+        JPanel new_p_courses= new JPanel();
+        new_p_courses.setBounds(0, 0, 1920, 250);
+        new_p_courses.setVisible(true);
+        new_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new_p_courses.setBackground(color);
+        new_p_courses.setLayout(null);
+        new_p_courses.add(new_p_ctop);
+        new_p_courses.add(new_home_btn);
+        new_p_courses.add(new_dashboard_btn);
+        new_p_courses.add(new_events_btn);
+        new_p_courses.add(new_m_courses_btn);
+        new_p_courses.add(new_h_blocks_btn);
+        new_p_courses.add(new_s_view_btn);
+
+        //load image
+        ImageIcon get_folder_icon = new ImageIcon(Main.class.getResource("folder_icon.png"));
+        Image scale_folder_icon = get_folder_icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
+        ImageIcon folder_image = new ImageIcon(scale_folder_icon);
+
+        //Folder button
+        JButton btn_folder_icon= new JButton("Courses");
+        btn_folder_icon.setBounds(20, 300, 200, 45);
+        btn_folder_icon.setIcon(folder_image);
+        btn_folder_icon.setBorderPainted(false);
+        btn_folder_icon.setContentAreaFilled(false);
+        btn_folder_icon.setFocusPainted(false);
+        btn_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //Agri-Food Button
+        JButton agri_food_button= new JButton(">   Agri-Food Supply Chain");
+        agri_food_button.setBounds(150, 300, 300, 45);
+        agri_food_button.setBorderPainted(false);
+        agri_food_button.setContentAreaFilled(false);
+        agri_food_button.setFocusPainted(false);
+        agri_food_button.setCursor(Cursor.getDefaultCursor());
+        agri_food_button.setFont(new Font("Arial", Font.BOLD, 16));
+
+        // JPanel For Agri_Food
+        JPanel inner_agri_courses = new JPanel();
+        inner_agri_courses.setBounds(0, 400, 1080, 1080);
+        JButton seq1_1 = new JButton();
+        seq1_1.setText("Sequence 1.1: Standard definition of food supply chain (FSC)");
+        seq1_1.setBounds(10, 0, 500, 50);
+        seq1_1.setBorderPainted(false);
+        seq1_1.setContentAreaFilled(false);
+        seq1_1.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_1.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_2 = new JButton();
+        seq1_2.setText("Sequence 1.2: The sustainable issue of FSC");
+        seq1_2.setBounds(10, 30, 500, 50);
+        seq1_2.setBorderPainted(false);
+        seq1_2.setContentAreaFilled(false);
+        seq1_2.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_2.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_3 = new JButton();
+        seq1_3.setText("Sequence 1.3: Innovative FSC based on the principles of bioeconomy and circular economy");
+        seq1_3.setBounds(10, 60, 800, 50);
+        seq1_3.setBorderPainted(false);
+        seq1_3.setContentAreaFilled(false);
+        seq1_3.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_3.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_4 = new JButton();
+        seq1_4.setText("Sequence 1.4: Case studies of bioeconomy/circular economy projects in Cambodia");
+        seq1_4.setBounds(10, 90, 800, 50);
+        seq1_4.setBorderPainted(false);
+        seq1_4.setContentAreaFilled(false);
+        seq1_4.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_4.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_1 = new JButton();
+        seq2_1.setText("Sequence 2.1: Economic analysis of contracts in a FSC");
+        seq2_1.setBounds(10, 120, 800, 50);
+        seq2_1.setBorderPainted(false);
+        seq2_1.setContentAreaFilled(false);
+        seq2_1.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_1.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_2 = new JButton();
+        seq2_2.setText("Sequence 2.2: Inter-firm contractual relationship");
+        seq2_2.setBounds(10, 150, 800, 50);
+        seq2_2.setBorderPainted(false);
+        seq2_2.setContentAreaFilled(false);
+        seq2_2.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_2.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_3 = new JButton();
+        seq2_3.setText("Sequence 2.3: The global value chain approach");
+        seq2_3.setBounds(10, 180, 800, 50);
+        seq2_3.setBorderPainted(false);
+        seq2_3.setContentAreaFilled(false);
+        seq2_3.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_3.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_4 = new JButton();
+        seq2_4.setText("Sequence 2.4: Apply GVC Framework to Cambodian Cases");
+        seq2_4.setBounds(10, 210, 800, 50);
+        seq2_4.setBorderPainted(false);
+        seq2_4.setContentAreaFilled(false);
+        seq2_4.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_4.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_1 = new JButton();
+        seq3_1.setText("Sequence 3.1: Introduction to Design Thinking");
+        seq3_1.setBounds(10, 240, 800, 50);
+        seq3_1.setBorderPainted(false);
+        seq3_1.setContentAreaFilled(false);
+        seq3_1.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_1.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_2 = new JButton();
+        seq3_2.setText("Sequence 3.2: Applying Design Thinking to improve existing agri-food supply chains");
+        seq3_2.setBounds(10, 270, 800, 50);
+        seq3_2.setBorderPainted(false);
+        seq3_2.setContentAreaFilled(false);
+        seq3_2.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_2.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_3 = new JButton();
+        seq3_3.setText("Sequence 3.3: Application 1: Improving the sustainability of an agrifood business within a FSC");
+        seq3_3.setBounds(10, 300, 800, 50);
+        seq3_3.setBorderPainted(false);
+        seq3_3.setContentAreaFilled(false);
+        seq3_3.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_3.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_4 = new JButton();
+        seq3_4.setText("Sequence 3.4: Development of an AgriFood business within a circular economy");
+        seq3_4.setBounds(10, 330, 800, 50);
+        seq3_4.setBorderPainted(false);
+        seq3_4.setContentAreaFilled(false);
+        seq3_4.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_4.setHorizontalAlignment(SwingConstants.LEFT);
+
+        inner_agri_courses.add(seq1_1);
+        inner_agri_courses.add(seq1_2);
+        inner_agri_courses.add(seq1_3);
+        inner_agri_courses.add(seq1_4);
+        inner_agri_courses.add(seq2_1);
+        inner_agri_courses.add(seq2_2);
+        inner_agri_courses.add(seq2_3);
+        inner_agri_courses.add(seq2_4);
+        inner_agri_courses.add(seq3_1);
+        inner_agri_courses.add(seq3_2);
+        inner_agri_courses.add(seq3_3);
+        inner_agri_courses.add(seq3_4);
+
+        seq1_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=533&currentorg=Course_ID1_ORG&scoid=1084&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=534&currentorg=Course_ID1_ORG&scoid=1086&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=535&currentorg=Course_ID1_ORG&scoid=1088&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=536&currentorg=Course_ID1_ORG&scoid=1090&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=537&currentorg=Course_ID1_ORG&scoid=1092&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=538&currentorg=Course_ID1_ORG&scoid=1094&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=539&currentorg=Course_ID1_ORG&scoid=1096&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=540&currentorg=Course_ID1_ORG&scoid=1098&sesskey=tZC85Ik3ls&display=popup&mode=normal&mode=normal");
+                    Desktop.getDesktop().browse(uri2_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=541&currentorg=Course_ID1_ORG&scoid=1100&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=542&currentorg=Course_ID1_ORG&scoid=1102&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=543&currentorg=Course_ID1_ORG&scoid=1104&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=544&currentorg=Course_ID1_ORG&scoid=1106&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        inner_agri_courses.setLayout(null);
+        inner_agri_courses.setVisible(true);
+
+        //Payment Panel For Agri_Food
+        JPanel pay_pan = new JPanel();
+        pay_pan.setLayout(null);
+        pay_pan.setBounds(0, 500, 1920, 1080);
+        JLabel pay_label = new JLabel();
+        pay_label.setText("Please Pay Before Accessing The Course");
+        pay_label.setBounds(750, 100, 500, 50);
+        pay_label.setFont(new Font("Arial", Font.BOLD, 24));
+        JButton pay_btn = new JButton();
+        pay_btn.setText("Pay Here");
+        pay_btn.setBounds(880, 150, 150, 50);
+
+
+        //Add To Pay Panel
+        pay_pan.add(pay_label);
+        pay_pan.add(pay_btn);
+
+        //Pay Button Behavoir
+        pay_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri_courses.setVisible(true);
+                pay_pan.setVisible(false);
+            }
+        });
+
+        //New JFrame for Agri_Food course
+
+        JFrame inner_agri = new JFrame();
+        inner_agri.setLayout(null);
+        inner_agri.setSize(1920, 1080);
+        inner_agri.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_agri.setLayout(null);
+        inner_agri.setLocationRelativeTo(null);
+        inner_agri.setResizable(false);
+
+        //Adding
+
+        inner_agri.getContentPane().add(new_p_courses);
+        inner_agri.add(btn_folder_icon);
+        inner_agri.add(agri_food_button);
+        inner_agri.add(inner_agri_courses);
+        inner_agri.add(pay_pan);
+
+        //Show the Frame when clicked
+        btn_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_agri.setVisible(true);
+                inner_agri_courses.setVisible(false);
+                pay_pan.setVisible(true);
+            }
+        });
+
+        btn_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_agri.setVisible(false);
+            }
+        });
+
+        //Go back to home/dashboard
+        new_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        //Copy From s_view_btn
+
+        JButton new2_s_view_btn= new JButton(" Standard View");
+        new2_s_view_btn.setBounds(1650, 190, 200, 55);
+        new2_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_s_view_btn.setForeground(Color.white);
+        new2_s_view_btn.setBackground(color);
+        new2_s_view_btn.setBorder(null);
+        new2_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new2_h_blocks_btn= new JButton(" Hide blocks");
+        new2_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new2_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_h_blocks_btn.setForeground(Color.white);
+        new2_h_blocks_btn.setBackground(color);
+        new2_h_blocks_btn.setBorder(null);
+        new2_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new2_m_courses_btn= new JButton(" My Courses");
+        new2_m_courses_btn.setBounds(500, 190, 150, 55);
+        new2_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_m_courses_btn.setForeground(Color.white);
+        new2_m_courses_btn.setBackground(color);
+        new2_m_courses_btn.setBorder(null);
+        new2_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new2_events_btn= new JButton(" Events");
+        new2_events_btn.setBounds(350, 190, 150, 55);
+        new2_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_events_btn.setForeground(Color.white);
+        new2_events_btn.setBackground(color);
+        new2_events_btn.setBorder(null);
+        new2_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new2_dashboard_btn= new JButton(" Dashboard");
+        new2_dashboard_btn.setBounds(200, 190, 150, 55);
+        new2_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_dashboard_btn.setForeground(Color.white);
+        new2_dashboard_btn.setBackground(color);
+        new2_dashboard_btn.setBorder(null);
+        new2_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new2_home_btn= new JButton(" Home");
+        new2_home_btn.setBounds(50, 190, 150, 55);
+        new2_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new2_home_btn.setForeground(Color.white);
+        new2_home_btn.setBackground(color);
+        new2_home_btn.setBorder(null);
+        new2_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new2_header_courses = new JLabel("   Entrepreneurship", profile, JLabel.CENTER);
+        new2_header_courses.setIcon(moodle_profile_pic);
+        new2_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new2_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new2_p_ctop= new JPanel();
+        new2_p_ctop.setBounds(10, 10, 1920, 180);
+        new2_p_ctop.setBackground(new Color(52, 204, 255));
+        new2_p_ctop.setLayout(null);
+        new2_p_ctop.add(new2_header_courses);
+
+        //Copy From p_course
+
+        JPanel new2_p_courses= new JPanel();
+        new2_p_courses.setBounds(0, 0, 1920, 250);
+        new2_p_courses.setVisible(true);
+        new2_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new2_p_courses.setBackground(color);
+        new2_p_courses.setLayout(null);
+        new2_p_courses.add(new2_p_ctop);
+        new2_p_courses.add(new2_home_btn);
+        new2_p_courses.add(new2_dashboard_btn);
+        new2_p_courses.add(new2_events_btn);
+        new2_p_courses.add(new2_m_courses_btn);
+        new2_p_courses.add(new2_h_blocks_btn);
+        new2_p_courses.add(new2_s_view_btn);
+
+        //Folder button
+        JButton btn2_folder_icon= new JButton("Courses");
+        btn2_folder_icon.setBounds(20, 300, 200, 45);
+        btn2_folder_icon.setIcon(folder_image);
+        btn2_folder_icon.setBorderPainted(false);
+        btn2_folder_icon.setContentAreaFilled(false);
+        btn2_folder_icon.setFocusPainted(false);
+        btn2_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn2_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //Entrepreneurship Button
+        JButton ent_button= new JButton(">   Entrepreneurship");
+        ent_button.setBounds(150, 300, 300, 45);
+        ent_button.setBorderPainted(false);
+        ent_button.setContentAreaFilled(false);
+        ent_button.setFocusPainted(false);
+        ent_button.setCursor(Cursor.getDefaultCursor());
+        ent_button.setFont(new Font("Arial", Font.BOLD, 16));
+
+        // JPanel For Entrepreneurship
+        JPanel inner_entre_courses = new JPanel();
+        inner_entre_courses.setBounds(0, 400, 1080, 1080);
+        JButton seq1_1_entre = new JButton();
+        seq1_1_entre.setText("Sequence 1.1: Presentation of Business Model");
+        seq1_1_entre.setBounds(10, 0, 500, 50);
+        seq1_1_entre.setBorderPainted(false);
+        seq1_1_entre.setContentAreaFilled(false);
+        seq1_1_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_1_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_2_entre = new JButton();
+        seq1_2_entre.setText("Sequence 1.2: CANVAS Business Model");
+        seq1_2_entre.setBounds(10, 30, 500, 50);
+        seq1_2_entre.setBorderPainted(false);
+        seq1_2_entre.setContentAreaFilled(false);
+        seq1_2_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_2_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_3_entre = new JButton();
+        seq1_3_entre.setText("Sequence 1.3: Mc Kinsey Matrix");
+        seq1_3_entre.setBounds(10, 60, 800, 50);
+        seq1_3_entre.setBorderPainted(false);
+        seq1_3_entre.setContentAreaFilled(false);
+        seq1_3_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_3_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq1_4_entre = new JButton();
+        seq1_4_entre.setText("Sequence 1.4: Porter Matrix");
+        seq1_4_entre.setBounds(10, 90, 800, 50);
+        seq1_4_entre.setBorderPainted(false);
+        seq1_4_entre.setContentAreaFilled(false);
+        seq1_4_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq1_4_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_1_entre = new JButton();
+        seq2_1_entre.setText("Sequence 2.1: Client/marketing orientation");
+        seq2_1_entre.setBounds(10, 120, 800, 50);
+        seq2_1_entre.setBorderPainted(false);
+        seq2_1_entre.setContentAreaFilled(false);
+        seq2_1_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_1_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_2_entre = new JButton();
+        seq2_2_entre.setText("Sequence 2.2: Marketing mix");
+        seq2_2_entre.setBounds(10, 150, 800, 50);
+        seq2_2_entre.setBorderPainted(false);
+        seq2_2_entre.setContentAreaFilled(false);
+        seq2_2_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_2_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq2_3_entre = new JButton();
+        seq2_3_entre.setText("Sequence 2.3: Branding");
+        seq2_3_entre.setBounds(10, 180, 800, 50);
+        seq2_3_entre.setBorderPainted(false);
+        seq2_3_entre.setContentAreaFilled(false);
+        seq2_3_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq2_3_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+
+        JButton seq3_1_entre = new JButton();
+        seq3_1_entre.setText("Sequence 3.1: Manager becomes an entrepreneur");
+        seq3_1_entre.setBounds(10, 210, 800, 50);
+        seq3_1_entre.setBorderPainted(false);
+        seq3_1_entre.setContentAreaFilled(false);
+        seq3_1_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_1_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_2_entre = new JButton();
+        seq3_2_entre.setText("Sequence 3.2: Manager/know how to surround youurself");
+        seq3_2_entre.setBounds(10, 240, 800, 50);
+        seq3_2_entre.setBorderPainted(false);
+        seq3_2_entre.setContentAreaFilled(false);
+        seq3_2_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_2_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_3_entre = new JButton();
+        seq3_3_entre.setText("Sequence 3.3: Financial/business plan's construction");
+        seq3_3_entre.setBounds(10, 270, 800, 50);
+        seq3_3_entre.setBorderPainted(false);
+        seq3_3_entre.setContentAreaFilled(false);
+        seq3_3_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_3_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        JButton seq3_4_entre = new JButton();
+        seq3_4_entre.setText("Sequence 3.4: Financial Analysis/Income and BS Statement");
+        seq3_4_entre.setBounds(10, 300, 800, 50);
+        seq3_4_entre.setBorderPainted(false);
+        seq3_4_entre.setContentAreaFilled(false);
+        seq3_4_entre.setFont(new Font("Arial", Font.BOLD, 16));
+        seq3_4_entre.setHorizontalAlignment(SwingConstants.LEFT);
+
+        inner_entre_courses.add(seq1_1_entre);
+        inner_entre_courses.add(seq1_2_entre);
+        inner_entre_courses.add(seq1_3_entre);
+        inner_entre_courses.add(seq1_4_entre);
+        inner_entre_courses.add(seq2_1_entre);
+        inner_entre_courses.add(seq2_2_entre);
+        inner_entre_courses.add(seq2_3_entre);
+        inner_entre_courses.add(seq3_1_entre);
+        inner_entre_courses.add(seq3_2_entre);
+        inner_entre_courses.add(seq3_3_entre);
+        inner_entre_courses.add(seq3_4_entre);
+
+        seq1_1_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=568&currentorg=Course_ID1_ORG&scoid=1154&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_2_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=569&currentorg=Course_ID1_ORG&scoid=1156&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_3_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=570&currentorg=Course_ID1_ORG&scoid=1158&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq1_4_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri1_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=571&currentorg=Course_ID1_ORG&scoid=1160&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri1_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_1_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=572&currentorg=Course_ID1_ORG&scoid=1162&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_2_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=573&currentorg=Course_ID1_ORG&scoid=1164&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq2_3_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri2_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=574&currentorg=Course_ID1_ORG&scoid=1166&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri2_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+
+        seq3_1_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_1 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=575&currentorg=Course_ID1_ORG&scoid=1168&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_1);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_2_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_2 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=576&currentorg=Course_ID1_ORG&scoid=1170&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_2);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_3_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_3 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=577&currentorg=Course_ID1_ORG&scoid=1172&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_3);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        seq3_4_entre.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    URI uri3_4 = new URI("https://moodle.itc.edu.kh/mod/scorm/player.php?a=578&currentorg=Course_ID1_ORG&scoid=1174&sesskey=tZC85Ik3ls&display=popup&mode=normal");
+                    Desktop.getDesktop().browse(uri3_4);
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        inner_entre_courses.setLayout(null);
+        inner_entre_courses.setVisible(true);
+
+        //Payment Panel For Agri_Food
+        JPanel pay_pan2 = new JPanel();
+        pay_pan2.setLayout(null);
+        pay_pan2.setBounds(0, 500, 1920, 1080);
+        JLabel pay_label2 = new JLabel();
+        pay_label2.setText("Please Pay Before Accessing The Course");
+        pay_label2.setBounds(750, 100, 500, 50);
+        pay_label2.setFont(new Font("Arial", Font.BOLD, 24));
+        JButton pay_btn2 = new JButton();
+        pay_btn2.setText("Pay Here");
+        pay_btn2.setBounds(880, 150, 150, 50);
+
+
+        //Add To Pay Panel
+        pay_pan2.add(pay_label2);
+        pay_pan2.add(pay_btn2);
+
+        //Pay Button Behavoir
+        pay_btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri_courses.setVisible(true);
+                pay_pan2.setVisible(false);
+            }
+        });
+
+        // Add JFrame for Entrepreneurship
+        JFrame inner_ent = new JFrame();
+        inner_ent.setLayout(null);
+        inner_ent.setSize(1920, 1080);
+        inner_ent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_ent.setLayout(null);
+        inner_ent.setLocationRelativeTo(null);
+        inner_ent.setResizable(false);
+        inner_ent.add(new2_p_courses);
+        inner_ent.add(ent_button);
+        inner_ent.add(btn2_folder_icon);
+        inner_ent.add(inner_entre_courses);
+        inner_ent.add(pay_pan2);
+
+
+
+        //Show the frame when clicked
+        btn2_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_ent.setVisible(true);
+                inner_entre_courses.setVisible(false);
+                pay_pan2.setVisible(true);
+            }
+        });
+
+        pay_btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pay_pan2.setVisible(false);
+                inner_entre_courses.setVisible(true);
+            }
+        });
+
+
+        btn2_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_ent.setVisible(false);
+            }
+        });
+
+        new2_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_ent.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new2_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_ent.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        //Copy From s_view_btn
+
+        JButton new3_s_view_btn= new JButton(" Standard View");
+        new3_s_view_btn.setBounds(1650, 190, 200, 55);
+        new3_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new3_s_view_btn.setForeground(Color.white);
+        new3_s_view_btn.setBackground(color);
+        new3_s_view_btn.setBorder(null);
+        new3_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new3_h_blocks_btn= new JButton(" Hide blocks");
+        new3_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new3_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new3_h_blocks_btn.setForeground(Color.white);
+        new3_h_blocks_btn.setBackground(color);
+        new3_h_blocks_btn.setBorder(null);
+        new3_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new3_m_courses_btn= new JButton(" My Courses");
+        new3_m_courses_btn.setBounds(500, 190, 150, 55);
+        new3_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new3_m_courses_btn.setForeground(Color.white);
+        new3_m_courses_btn.setBackground(color);
+        new3_m_courses_btn.setBorder(null);
+        new3_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new3_events_btn= new JButton(" Events");
+        new3_events_btn.setBounds(350, 190, 150, 55);
+        new3_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new3_events_btn.setForeground(Color.white);
+        new3_events_btn.setBackground(color);
+        new3_events_btn.setBorder(null);
+        new3_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new3_dashboard_btn= new JButton(" Dashboard");
+        new3_dashboard_btn.setBounds(200, 190, 150, 55);
+        new3_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new3_dashboard_btn.setForeground(Color.white);
+        new3_dashboard_btn.setBackground(color);
+        new3_dashboard_btn.setBorder(null);
+        new3_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new3_home_btn= new JButton(" Home");
+        new3_home_btn.setBounds(50, 190, 150, 55);
+        new3_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new3_home_btn.setForeground(Color.white);
+        new3_home_btn.setBackground(color);
+        new3_home_btn.setBorder(null);
+        new3_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new3_header_courses = new JLabel("   Food Market", profile, JLabel.CENTER);
+        new3_header_courses.setIcon(moodle_profile_pic);
+        new3_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new3_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new3_p_ctop= new JPanel();
+        new3_p_ctop.setBounds(10, 10, 1920, 180);
+        new3_p_ctop.setBackground(new Color(52, 204, 255));
+        new3_p_ctop.setLayout(null);
+        new3_p_ctop.add(new3_header_courses);
+
+        //Copy From p_course
+
+        JPanel new3_p_courses= new JPanel();
+        new3_p_courses.setBounds(0, 0, 1920, 250);
+        new3_p_courses.setVisible(true);
+        new3_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new3_p_courses.setBackground(color);
+        new3_p_courses.setLayout(null);
+        new3_p_courses.add(new3_p_ctop);
+        new3_p_courses.add(new3_home_btn);
+        new3_p_courses.add(new3_dashboard_btn);
+        new3_p_courses.add(new3_events_btn);
+        new3_p_courses.add(new3_m_courses_btn);
+        new3_p_courses.add(new3_h_blocks_btn);
+        new3_p_courses.add(new3_s_view_btn);
+
+        //Folder button
+        JButton btn3_folder_icon= new JButton("Courses");
+        btn3_folder_icon.setBounds(20, 300, 200, 45);
+        btn3_folder_icon.setIcon(folder_image);
+        btn3_folder_icon.setBorderPainted(false);
+        btn3_folder_icon.setContentAreaFilled(false);
+        btn3_folder_icon.setFocusPainted(false);
+        btn3_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn3_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //Food Market button
+        JButton food_market_icon= new JButton(">   Food Market");
+        food_market_icon.setBounds(150, 300, 300, 45);
+        food_market_icon.setBorderPainted(false);
+        food_market_icon.setContentAreaFilled(false);
+        food_market_icon.setFocusPainted(false);
+        food_market_icon.setCursor(Cursor.getDefaultCursor());
+        food_market_icon.setFont(new Font("Arial", Font.BOLD, 16));
+        btn3_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_ent.setVisible(false);
+            }
+        });
+
+        // Add JFrame for Food Market
+        JFrame inner_food_market = new JFrame();
+        inner_food_market.setLayout(null);
+        inner_food_market.setSize(1920, 1080);
+        inner_food_market.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_food_market.setLayout(null);
+        inner_food_market.setLocationRelativeTo(null);
+        inner_food_market.setResizable(false);
+        inner_food_market.add(new3_p_courses);
+        inner_food_market.add(btn3_folder_icon);
+        inner_food_market.add(food_market_icon);
+
+        //Show the frame when clicked
+        btn3_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_food_market.setVisible(true);
+            }
+        });
+
+        new3_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_food_market.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new3_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_food_market.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        //Copy From s_view_btn
+
+        JButton new4_s_view_btn= new JButton(" Standard View");
+        new4_s_view_btn.setBounds(1650, 190, 200, 55);
+        new4_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new4_s_view_btn.setForeground(Color.white);
+        new4_s_view_btn.setBackground(color);
+        new4_s_view_btn.setBorder(null);
+        new4_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new4_h_blocks_btn= new JButton(" Hide blocks");
+        new4_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new4_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new4_h_blocks_btn.setForeground(Color.white);
+        new4_h_blocks_btn.setBackground(color);
+        new4_h_blocks_btn.setBorder(null);
+        new4_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new4_m_courses_btn= new JButton(" My Courses");
+        new4_m_courses_btn.setBounds(500, 190, 150, 55);
+        new4_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new4_m_courses_btn.setForeground(Color.white);
+        new4_m_courses_btn.setBackground(color);
+        new4_m_courses_btn.setBorder(null);
+        new4_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new4_events_btn= new JButton(" Events");
+        new4_events_btn.setBounds(350, 190, 150, 55);
+        new4_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new4_events_btn.setForeground(Color.white);
+        new4_events_btn.setBackground(color);
+        new4_events_btn.setBorder(null);
+        new4_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new4_dashboard_btn= new JButton(" Dashboard");
+        new4_dashboard_btn.setBounds(200, 190, 150, 55);
+        new4_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new4_dashboard_btn.setForeground(Color.white);
+        new4_dashboard_btn.setBackground(color);
+        new4_dashboard_btn.setBorder(null);
+        new4_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new4_home_btn= new JButton(" Home");
+        new4_home_btn.setBounds(50, 190, 150, 55);
+        new4_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new4_home_btn.setForeground(Color.white);
+        new4_home_btn.setBackground(color);
+        new4_home_btn.setBorder(null);
+        new4_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new4_header_courses = new JLabel("   New Product Development", profile, JLabel.CENTER);
+        new4_header_courses.setIcon(moodle_profile_pic);
+        new4_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new4_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new4_p_ctop= new JPanel();
+        new4_p_ctop.setBounds(10, 10, 1920, 180);
+        new4_p_ctop.setBackground(new Color(52, 204, 255));
+        new4_p_ctop.setLayout(null);
+        new4_p_ctop.add(new4_header_courses);
+
+        //Copy From p_course
+
+        JPanel new4_p_courses= new JPanel();
+        new4_p_courses.setBounds(0, 0, 1920, 250);
+        new4_p_courses.setVisible(true);
+        new4_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new4_p_courses.setBackground(color);
+        new4_p_courses.setLayout(null);
+        new4_p_courses.add(new4_p_ctop);
+        new4_p_courses.add(new4_home_btn);
+        new4_p_courses.add(new4_dashboard_btn);
+        new4_p_courses.add(new4_events_btn);
+        new4_p_courses.add(new4_m_courses_btn);
+        new4_p_courses.add(new4_h_blocks_btn);
+        new4_p_courses.add(new4_s_view_btn);
+
+        //Folder button
+        JButton btn4_folder_icon= new JButton("Courses");
+        btn4_folder_icon.setBounds(20, 300, 200, 45);
+        btn4_folder_icon.setIcon(folder_image);
+        btn4_folder_icon.setBorderPainted(false);
+        btn4_folder_icon.setContentAreaFilled(false);
+        btn4_folder_icon.setFocusPainted(false);
+        btn4_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn4_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //New Product Development button
+        JButton product_dev_icon= new JButton(">   New Product Development");
+        product_dev_icon.setBounds(150, 300, 300, 45);
+        product_dev_icon.setBorderPainted(false);
+        product_dev_icon.setContentAreaFilled(false);
+        product_dev_icon.setFocusPainted(false);
+        product_dev_icon.setCursor(Cursor.getDefaultCursor());
+        product_dev_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+        // Add JFrame for New Product Development
+        JFrame inner_product_dev = new JFrame();
+        inner_product_dev.setLayout(null);
+        inner_product_dev.setSize(1920, 1080);
+        inner_product_dev.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_product_dev.setLayout(null);
+        inner_product_dev.setLocationRelativeTo(null);
+        inner_product_dev.setResizable(false);
+        inner_product_dev.add(new4_p_courses);
+        inner_product_dev.add(btn4_folder_icon);
+        inner_product_dev.add(product_dev_icon);
+
+        //Show the frame when clicked
+        btn4_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_product_dev.setVisible(true);
+            }
+        });
+
+        btn4_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_product_dev.setVisible(false);
+            }
+        });
+
+        new4_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_product_dev.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new4_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_product_dev.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        //Copy From s_view_btn
+
+        JButton new5_s_view_btn= new JButton(" Standard View");
+        new5_s_view_btn.setBounds(1650, 190, 200, 55);
+        new5_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_s_view_btn.setForeground(Color.white);
+        new5_s_view_btn.setBackground(color);
+        new5_s_view_btn.setBorder(null);
+        new5_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new5_h_blocks_btn= new JButton(" Hide blocks");
+        new5_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new5_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_h_blocks_btn.setForeground(Color.white);
+        new5_h_blocks_btn.setBackground(color);
+        new5_h_blocks_btn.setBorder(null);
+        new5_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new5_m_courses_btn= new JButton(" My Courses");
+        new5_m_courses_btn.setBounds(500, 190, 150, 55);
+        new5_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_m_courses_btn.setForeground(Color.white);
+        new5_m_courses_btn.setBackground(color);
+        new5_m_courses_btn.setBorder(null);
+        new5_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new5_events_btn= new JButton(" Events");
+        new5_events_btn.setBounds(350, 190, 150, 55);
+        new5_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_events_btn.setForeground(Color.white);
+        new5_events_btn.setBackground(color);
+        new5_events_btn.setBorder(null);
+        new5_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new5_dashboard_btn= new JButton(" Dashboard");
+        new5_dashboard_btn.setBounds(200, 190, 150, 55);
+        new5_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_dashboard_btn.setForeground(Color.white);
+        new5_dashboard_btn.setBackground(color);
+        new5_dashboard_btn.setBorder(null);
+        new5_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new5_home_btn= new JButton(" Home");
+        new5_home_btn.setBounds(50, 190, 150, 55);
+        new5_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new5_home_btn.setForeground(Color.white);
+        new5_home_btn.setBackground(color);
+        new5_home_btn.setBorder(null);
+        new5_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new5_header_courses = new JLabel("   Food Legislation", profile, JLabel.CENTER);
+        new5_header_courses.setIcon(moodle_profile_pic);
+        new5_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new5_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new5_p_ctop= new JPanel();
+        new5_p_ctop.setBounds(10, 10, 1920, 180);
+        new5_p_ctop.setBackground(new Color(52, 204, 255));
+        new5_p_ctop.setLayout(null);
+        new5_p_ctop.add(new5_header_courses);
+
+        //Copy From p_course
+
+        JPanel new5_p_courses= new JPanel();
+        new5_p_courses.setBounds(0, 0, 1920, 250);
+        new5_p_courses.setVisible(true);
+        new5_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new5_p_courses.setBackground(color);
+        new5_p_courses.setLayout(null);
+        new5_p_courses.add(new5_p_ctop);
+        new5_p_courses.add(new5_home_btn);
+        new5_p_courses.add(new5_dashboard_btn);
+        new5_p_courses.add(new5_events_btn);
+        new5_p_courses.add(new5_m_courses_btn);
+        new5_p_courses.add(new5_h_blocks_btn);
+        new5_p_courses.add(new5_s_view_btn);
+
+        //Folder button
+        JButton btn5_folder_icon= new JButton("Courses");
+        btn5_folder_icon.setBounds(20, 300, 200, 45);
+        btn5_folder_icon.setIcon(folder_image);
+        btn5_folder_icon.setBorderPainted(false);
+        btn5_folder_icon.setContentAreaFilled(false);
+        btn5_folder_icon.setFocusPainted(false);
+        btn5_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn5_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //Food Legislation button
+        JButton food_legis_icon= new JButton(">   Food Legislation");
+        food_legis_icon.setBounds(150, 300, 300, 45);
+        food_legis_icon.setBorderPainted(false);
+        food_legis_icon.setContentAreaFilled(false);
+        food_legis_icon.setFocusPainted(false);
+        food_legis_icon.setCursor(Cursor.getDefaultCursor());
+        food_legis_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+
+        // Add JFrame for Food Legislation
+        JFrame inner_food_legislation = new JFrame();
+        inner_food_legislation.setLayout(null);
+        inner_food_legislation.setSize(1920, 1080);
+        inner_food_legislation.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_food_legislation.setLayout(null);
+        inner_food_legislation.setLocationRelativeTo(null);
+        inner_food_legislation.setResizable(false);
+        inner_food_legislation.add(new5_p_courses);
+        inner_food_legislation.add(food_legis_icon);
+        inner_food_legislation.add(btn5_folder_icon);
+
+        //Show the frame when clicked
+        btn5_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_food_legislation.setVisible(true);
+            }
+        });
+
+        btn5_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_food_legislation.setVisible(false);
+            }
+        });
+
+        new5_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_food_legislation.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new5_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_food_legislation.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        //Copy From s_view_btn
+
+        JButton new6_s_view_btn= new JButton(" Standard View");
+        new6_s_view_btn.setBounds(1650, 190, 200, 55);
+        new6_s_view_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_s_view_btn.setForeground(Color.white);
+        new6_s_view_btn.setBackground(color);
+        new6_s_view_btn.setBorder(null);
+        new6_s_view_btn.setIcon(s_view);
+
+        //Copy From h_blocks_btn
+
+        JButton new6_h_blocks_btn= new JButton(" Hide blocks");
+        new6_h_blocks_btn.setBounds(1500, 190, 150, 55);
+        new6_h_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_h_blocks_btn.setForeground(Color.white);
+        new6_h_blocks_btn.setBackground(color);
+        new6_h_blocks_btn.setBorder(null);
+        new6_h_blocks_btn.setIcon(h_blocks);
+
+        //Copy From m_courses_btn
+        JButton new6_m_courses_btn= new JButton(" My Courses");
+        new6_m_courses_btn.setBounds(500, 190, 150, 55);
+        new6_m_courses_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_m_courses_btn.setForeground(Color.white);
+        new6_m_courses_btn.setBackground(color);
+        new6_m_courses_btn.setBorder(null);
+        new6_m_courses_btn.setIcon(m_courses);
+
+        //Copy From events_btn
+        JButton new6_events_btn= new JButton(" Events");
+        new6_events_btn.setBounds(350, 190, 150, 55);
+        new6_events_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_events_btn.setForeground(Color.white);
+        new6_events_btn.setBackground(color);
+        new6_events_btn.setBorder(null);
+        new6_events_btn.setIcon(events);
+
+        //Copy From dashboard_btn
+        JButton new6_dashboard_btn= new JButton(" Dashboard");
+        new6_dashboard_btn.setBounds(200, 190, 150, 55);
+        new6_dashboard_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_dashboard_btn.setForeground(Color.white);
+        new6_dashboard_btn.setBackground(color);
+        new6_dashboard_btn.setBorder(null);
+        new6_dashboard_btn.setIcon(dashboard);
+        //Copy From home_btn
+
+        JButton new6_home_btn= new JButton(" Home");
+        new6_home_btn.setBounds(50, 190, 150, 55);
+        new6_home_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+        new6_home_btn.setForeground(Color.white);
+        new6_home_btn.setBackground(color);
+        new6_home_btn.setBorder(null);
+        new6_home_btn.setIcon(home);
+
+        //Copy From header_courses
+
+        JLabel new6_header_courses = new JLabel("   Food Industrial Design", profile, JLabel.CENTER);
+        new6_header_courses.setIcon(moodle_profile_pic);
+        new6_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
+        new6_header_courses.setBounds(20, 10, 1400, 140);
+
+        //Copy From p_ctop
+
+        JPanel new6_p_ctop= new JPanel();
+        new6_p_ctop.setBounds(10, 10, 1920, 180);
+        new6_p_ctop.setBackground(new Color(52, 204, 255));
+        new6_p_ctop.setLayout(null);
+        new6_p_ctop.add(new6_header_courses);
+
+        //Copy From p_course
+
+        JPanel new6_p_courses= new JPanel();
+        new6_p_courses.setBounds(0, 0, 1920, 250);
+        new6_p_courses.setVisible(true);
+        new6_p_courses.setBorder(new LineBorder(Color.cyan, 2));
+        new6_p_courses.setBackground(color);
+        new6_p_courses.setLayout(null);
+        new6_p_courses.add(new6_p_ctop);
+        new6_p_courses.add(new6_home_btn);
+        new6_p_courses.add(new6_dashboard_btn);
+        new6_p_courses.add(new6_events_btn);
+        new6_p_courses.add(new6_m_courses_btn);
+        new6_p_courses.add(new6_h_blocks_btn);
+        new6_p_courses.add(new6_s_view_btn);
+
+        //Folder button
+        JButton btn6_folder_icon= new JButton("Courses");
+        btn6_folder_icon.setBounds(20, 300, 200, 45);
+        btn6_folder_icon.setIcon(folder_image);
+        btn6_folder_icon.setBorderPainted(false);
+        btn6_folder_icon.setContentAreaFilled(false);
+        btn6_folder_icon.setFocusPainted(false);
+        btn6_folder_icon.setCursor(Cursor.getDefaultCursor());
+        btn6_folder_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+
+        //New Product Development button
+        JButton indus_desi_icon= new JButton(">   Food Industrial Design");
+        indus_desi_icon.setBounds(150, 300, 300, 45);
+        indus_desi_icon.setBorderPainted(false);
+        indus_desi_icon.setContentAreaFilled(false);
+        indus_desi_icon.setFocusPainted(false);
+        indus_desi_icon.setCursor(Cursor.getDefaultCursor());
+        indus_desi_icon.setFont(new Font("Arial", Font.BOLD, 16));
+
+        // Add JFrame for Food Industrial Design
+        JFrame inner_indus_design = new JFrame();
+        inner_indus_design.setLayout(null);
+        inner_indus_design.setSize(1920, 1080);
+        inner_indus_design.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        inner_indus_design.setLayout(null);
+        inner_indus_design.setLocationRelativeTo(null);
+        inner_indus_design.setResizable(false);
+        inner_indus_design.add(new6_p_courses);
+        inner_indus_design.add(btn6_folder_icon);
+        inner_indus_design.add(indus_desi_icon);
+
+        //Show the frame when clicked
+        btn6_course.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(false);
+                inner_indus_design.setVisible(true);
+            }
+        });
+
+        btn6_folder_icon.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                inner_indus_design.setVisible(false);
+            }
+        });
+
+        new6_home_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_indus_design.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+        new6_dashboard_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_indus_design.setVisible(false);
+                fcourses.setVisible(true);
+            }
+        });
+
+
+
+
+
+
     }
 }
