@@ -539,8 +539,21 @@ public class Main {
         show_blocks_btn.setBorder(null);
         show_blocks_btn.setIcon(h_blocks);
 
+        // Payment Panel
+        JPanel pay_pan = new JPanel();
+        pay_pan.setBounds(0, 0, 1920, 1080);
+        JLabel pay_label = new JLabel();
+        pay_label.setBounds(0, 0, 500, 50);
+        pay_label.setFont(new Font("Arial", Font.BOLD, 24));
+        pay_label.setText("Please pay before Accessing the Course");
 
 
+
+        // Add to payment
+        pay_pan.add(pay_label);
+
+
+        // p_courses Panel
         JPanel p_courses= new JPanel();
         p_courses.setBounds(0, 0, 1920, 250);
         p_courses.setVisible(true);
