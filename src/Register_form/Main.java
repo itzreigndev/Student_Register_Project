@@ -1951,6 +1951,31 @@ public class Main {
         inner_entre_courses.setLayout(null);
         inner_entre_courses.setVisible(true);
 
+        //Payment Panel For Agri_Food
+        JPanel pay_pan2 = new JPanel();
+        pay_pan2.setLayout(null);
+        pay_pan2.setBounds(0, 500, 1920, 1080);
+        JLabel pay_label2 = new JLabel();
+        pay_label2.setText("Please Pay Before Accessing The Course");
+        pay_label2.setBounds(750, 100, 500, 50);
+        pay_label2.setFont(new Font("Arial", Font.BOLD, 24));
+        JButton pay_btn2 = new JButton();
+        pay_btn2.setText("Pay Here");
+        pay_btn2.setBounds(880, 150, 150, 50);
+
+
+        //Add To Pay Panel
+        pay_pan2.add(pay_label2);
+        pay_pan2.add(pay_btn2);
+
+        //Pay Button Behavoir
+        pay_btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri_courses.setVisible(true);
+                pay_pan2.setVisible(false);
+            }
+        });
 
         // Add JFrame for Entrepreneurship
         JFrame inner_ent = new JFrame();
@@ -1964,6 +1989,7 @@ public class Main {
         inner_ent.add(ent_button);
         inner_ent.add(btn2_folder_icon);
         inner_ent.add(inner_entre_courses);
+        inner_ent.add(pay_pan2);
 
 
 
@@ -1973,6 +1999,16 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 fcourses.setVisible(false);
                 inner_ent.setVisible(true);
+                inner_entre_courses.setVisible(false);
+                pay_pan2.setVisible(true);
+            }
+        });
+
+        pay_btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pay_pan2.setVisible(false);
+                inner_entre_courses.setVisible(true);
             }
         });
 
