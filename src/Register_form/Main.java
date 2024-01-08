@@ -532,7 +532,7 @@ public class Main {
 
         // Show Block
         JButton show_blocks_btn= new JButton(" Show blocks");
-        show_blocks_btn.setBounds(1500, 190, 200, 55);
+        show_blocks_btn.setBounds(1470, 190, 200, 55);
         show_blocks_btn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
         show_blocks_btn.setForeground(Color.white);
         show_blocks_btn.setBackground(color);
@@ -873,8 +873,7 @@ public class Main {
 
 
         JPanel p_groupcourses= new JPanel();
-        p_groupcourses.setBounds(20, 350, 1000, 600);
-        p_groupcourses.setBounds(20, 350, 1000, 600);
+        p_groupcourses.setBounds(20, 350, 920, 600);
         p_groupcourses.setLayout(null);
 
         p_groupcourses.add(p_agri);
@@ -931,11 +930,14 @@ public class Main {
         navigation.setBounds(80, 250, 500, 50);
         navigation.setFont(new Font("Aria", Font.BOLD, 30));
         navigation.setForeground(Color.WHITE);
-        JLabel my_courses = new JLabel();
+        JButton my_courses = new JButton();
         my_courses.setText("     My Courses");
         my_courses.setBounds(80, 300, 500, 50);
         my_courses.setFont(new Font("Aria", Font.BOLD, 24));
         my_courses.setForeground(color.WHITE);
+        my_courses.setBorderPainted(false);
+        my_courses.setHorizontalAlignment(SwingConstants.LEFT);
+        my_courses.setContentAreaFilled(false);
 
         // Add to panel
         nav_pan.add(my_courses);
