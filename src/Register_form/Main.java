@@ -134,7 +134,7 @@ public class Main extends javax.swing.JFrame{
         signup_label.setForeground(Color.red);
         signup_label.setFont(font_login);
 
-        ImageIcon facebook = new ImageIcon(Main.class.getResource("icons8-facebook-48.png"));
+        ImageIcon facebook = new ImageIcon(Main.class.getResource("icons8-facebook-48.jpg"));
         Image facebook_logo = facebook.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
 
         ImageIcon facebooklogo = new ImageIcon(facebook_logo);
@@ -145,7 +145,7 @@ public class Main extends javax.swing.JFrame{
 
 
 
-        ImageIcon google = new ImageIcon(Main.class.getResource("icons8-google-48.png"));
+        ImageIcon google = new ImageIcon(Main.class.getResource("icons8-google-48.jpg"));
         Image google_logo = google.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
 
         ImageIcon googlelogo = new ImageIcon(google_logo);
@@ -154,7 +154,7 @@ public class Main extends javax.swing.JFrame{
         google_label.setIcon(googlelogo);
         google_label.setBounds(200, 400, 40, 40);
 
-        ImageIcon twitter = new ImageIcon(Main.class.getResource("icons8-twitter-48.png"));
+        ImageIcon twitter = new ImageIcon(Main.class.getResource("icons8-twitter-48.jpg"));
         Image twitter_logo = twitter.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
 
         ImageIcon twitterlogo = new ImageIcon(twitter_logo);
