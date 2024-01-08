@@ -63,7 +63,7 @@ public class Main extends javax.swing.JFrame{
         JFrame flogin= new JFrame();
         Font font_login= new Font("Arial", Font.BOLD, 18);
 
-        ImageIcon background = new ImageIcon(Main.class.getResource("background_login.png"));
+        ImageIcon background = new ImageIcon(Main.class.getResource("background_login.jpg"));
         Image background_logo = background.getImage().getScaledInstance(1540, 900, Image.SCALE_DEFAULT);
 
         ImageIcon backgroundlogo = new ImageIcon(background_logo);
