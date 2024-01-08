@@ -1524,7 +1524,31 @@ public class Main {
         inner_agri_courses.setLayout(null);
         inner_agri_courses.setVisible(true);
 
+        //Payment Panel For Agri_Food
+        JPanel pay_pan = new JPanel();
+        pay_pan.setLayout(null);
+        pay_pan.setBounds(0, 500, 1920, 1080);
+        JLabel pay_label = new JLabel();
+        pay_label.setText("Please Pay Before Accessing The Course");
+        pay_label.setBounds(750, 100, 500, 50);
+        pay_label.setFont(new Font("Arial", Font.BOLD, 24));
+        JButton pay_btn = new JButton();
+        pay_btn.setText("Pay Here");
+        pay_btn.setBounds(880, 150, 150, 50);
 
+
+        //Add To Pay Panel
+        pay_pan.add(pay_label);
+        pay_pan.add(pay_btn);
+
+        //Pay Button Behavoir
+        pay_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inner_agri_courses.setVisible(true);
+                pay_pan.setVisible(false);
+            }
+        });
 
         //New JFrame for Agri_Food course
 
@@ -1542,6 +1566,7 @@ public class Main {
         inner_agri.add(btn_folder_icon);
         inner_agri.add(agri_food_button);
         inner_agri.add(inner_agri_courses);
+        inner_agri.add(pay_pan);
 
         //Show the Frame when clicked
         btn_course.addActionListener(new ActionListener() {
@@ -1549,6 +1574,8 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 fcourses.setVisible(false);
                 inner_agri.setVisible(true);
+                inner_agri_courses.setVisible(false);
+                pay_pan.setVisible(true);
             }
         });
 
