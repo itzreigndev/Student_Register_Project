@@ -1530,7 +1530,7 @@ public class Main {
         pay_pan.setBounds(0, 500, 1920, 1080);
         JLabel license_label = new JLabel();
         license_label.setBounds(580, 50, 800, 50);
-        license_label.setText("If you have already paid, enter the license here");
+        license_label.setText("If you have already paid, enter the license key here");
         license_label.setFont(new Font("Arial", Font.BOLD, 24));
         license_label.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -1991,7 +1991,7 @@ public class Main {
         pay_pan_2.setBounds(0, 500, 1920, 1080);
         JLabel license_label_2 = new JLabel();
         license_label_2.setBounds(580, 50, 800, 50);
-        license_label_2.setText("If you have already paid, enter the license here");
+        license_label_2.setText("If you have already paid, enter the license key here");
         license_label_2.setFont(new Font("Arial", Font.BOLD, 24));
         license_label_2.setHorizontalAlignment(SwingConstants.CENTER);
 
