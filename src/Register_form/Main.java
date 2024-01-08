@@ -1529,7 +1529,7 @@ public class Main {
         pay_pan.setLayout(null);
         pay_pan.setBounds(0, 500, 1920, 1080);
         JLabel license_label = new JLabel();
-        license_label.setBounds(570, 50, 800, 50);
+        license_label.setBounds(580, 50, 800, 50);
         license_label.setText("If you have already paid enter the license here");
         license_label.setFont(new Font("Arial", Font.BOLD, 24));
         license_label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1552,6 +1552,7 @@ public class Main {
         JButton pay_btn = new JButton();
         pay_btn.setText("Pay Here");
         pay_btn.setBounds(880, 250, 150, 50);
+        pay_btn.setFont(new Font("Arial", Font.BOLD, 24));
 
 
         //Add To Pay Panel
@@ -1566,8 +1567,20 @@ public class Main {
         pay_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inner_agri_courses.setVisible(true);
+//                inner_agri_courses.setVisible(true);
                 pay_pan.setVisible(false);
+            }
+        });
+
+        //License Enter Button
+        license_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String license_number = pay_license.getText();
+                if (license_number.equals("001")) {
+                    inner_agri_courses.setVisible(true);
+                    pay_pan.setVisible(false);
+                }
             }
         });
 
@@ -1973,30 +1986,65 @@ public class Main {
         inner_entre_courses.setVisible(true);
 
         //Payment Panel For Agri_Food
-        JPanel pay_pan2 = new JPanel();
-        pay_pan2.setLayout(null);
-        pay_pan2.setBounds(0, 500, 1920, 1080);
-        JLabel pay_label2 = new JLabel();
-        pay_label2.setText("Please Pay Before Accessing The Course");
-        pay_label2.setBounds(750, 100, 500, 50);
-        pay_label2.setFont(new Font("Arial", Font.BOLD, 24));
-        JButton pay_btn2 = new JButton();
-        pay_btn2.setText("Pay Here");
-        pay_btn2.setBounds(880, 150, 150, 50);
+        JPanel pay_pan_2 = new JPanel();
+        pay_pan_2.setLayout(null);
+        pay_pan_2.setBounds(0, 500, 1920, 1080);
+        JLabel license_label_2 = new JLabel();
+        license_label_2.setBounds(580, 50, 800, 50);
+        license_label_2.setText("If you have already paid enter the license here");
+        license_label_2.setFont(new Font("Arial", Font.BOLD, 24));
+        license_label_2.setHorizontalAlignment(SwingConstants.CENTER);
+
+        JTextField pay_license_2 = new JTextField();
+        pay_license_2.setBounds(800, 100, 300, 50);
+        pay_license_2.setHorizontalAlignment(SwingConstants.CENTER);
+        pay_license_2.setFont(new Font("Arial", Font.BOLD, 24));
+
+        JButton license_btn_2 = new JButton();
+        license_btn_2.setBounds(1100, 100, 100, 50);
+        license_btn_2.setText("Enter");
+        license_btn_2.setFont(new Font("Arial", Font.BOLD, 24));
+
+
+        JLabel pay_label_2 = new JLabel();
+        pay_label_2.setText("Please Pay Before Accessing The Course");
+        pay_label_2.setBounds(750, 200, 500, 50);
+        pay_label_2.setFont(new Font("Arial", Font.BOLD, 24));
+        JButton pay_btn_2 = new JButton();
+        pay_btn_2.setText("Pay Here");
+        pay_btn_2.setBounds(880, 250, 150, 50);
+        pay_btn_2.setFont(new Font("Arial", Font.BOLD, 24));
 
 
         //Add To Pay Panel
-        pay_pan2.add(pay_label2);
-        pay_pan2.add(pay_btn2);
+        pay_pan_2.add(pay_label_2);
+        pay_pan_2.add(pay_btn_2);
+        pay_pan_2.add(pay_license_2);
+        pay_pan_2.add(license_label_2);
+        pay_pan_2.add(license_btn_2);
+
 
         //Pay Button Behavoir
-        pay_btn2.addActionListener(new ActionListener() {
+        pay_btn_2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inner_agri_courses.setVisible(true);
-                pay_pan2.setVisible(false);
+//                inner_agri_courses.setVisible(true);
+                pay_pan_2.setVisible(false);
             }
         });
+
+        //License Enter Button
+        license_btn_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String license_number_2 = pay_license_2.getText();
+                if (license_number_2.equals("001")) {
+                    inner_entre_courses.setVisible(true);
+                    pay_pan_2.setVisible(false);
+                }
+            }
+        });
+
 
         // Add JFrame for Entrepreneurship
         JFrame inner_ent = new JFrame();
@@ -2010,7 +2058,7 @@ public class Main {
         inner_ent.add(ent_button);
         inner_ent.add(btn2_folder_icon);
         inner_ent.add(inner_entre_courses);
-        inner_ent.add(pay_pan2);
+        inner_ent.add(pay_pan_2);
 
 
 
@@ -2021,17 +2069,17 @@ public class Main {
                 fcourses.setVisible(false);
                 inner_ent.setVisible(true);
                 inner_entre_courses.setVisible(false);
-                pay_pan2.setVisible(true);
+                pay_pan_2.setVisible(true);
             }
         });
 
-        pay_btn2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                pay_pan2.setVisible(false);
-                inner_entre_courses.setVisible(true);
-            }
-        });
+//        pay_pan_2.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                pay_pan_2.setVisible(false);
+//                inner_entre_courses.setVisible(true);
+//            }
+//        });
 
 
         btn2_folder_icon.addActionListener(new ActionListener() {
