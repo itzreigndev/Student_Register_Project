@@ -1535,15 +1535,15 @@ public class Main {
         license_label.setFont(new Font("Arial", Font.BOLD, 24));
         license_label.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JTextField pay_license = new JTextField();
-        pay_license.setBounds(800, 100, 300, 50);
-        pay_license.setHorizontalAlignment(SwingConstants.CENTER);
-        pay_license.setFont(new Font("Arial", Font.BOLD, 24));
+        JTextField pay_license_2 = new JTextField();
+        pay_license_2.setBounds(800, 100, 300, 50);
+        pay_license_2.setHorizontalAlignment(SwingConstants.CENTER);
+        pay_license_2.setFont(new Font("Arial", Font.BOLD, 24));
 
-        JButton license_btn = new JButton();
-        license_btn.setBounds(1100, 100, 100, 50);
-        license_btn.setText("Enter");
-        license_btn.setFont(new Font("Arial", Font.BOLD, 24));
+        JButton license_btn_2 = new JButton();
+        license_btn_2.setBounds(1100, 100, 100, 50);
+        license_btn_2.setText("Enter");
+        license_btn_2.setFont(new Font("Arial", Font.BOLD, 24));
 
 
         JLabel pay_label = new JLabel();
@@ -1585,11 +1585,11 @@ public class Main {
         //Add To Pay Panel
         pay_pan.add(pay_label);
         pay_pan.add(pay_btn);
-        pay_pan.add(pay_license);
+        pay_pan.add(pay_license_2);
         pay_pan.add(license_label);
-        pay_pan.add(license_btn);
+        pay_pan.add(license_btn_2);
 
-
+        // License keys for agri_food+
         ArrayList<String> license_keys = new ArrayList<String>();
         license_keys.add("A01");
         license_keys.add("A02");
@@ -1606,11 +1606,11 @@ public class Main {
         });
 
         //License Enter Button
-        license_btn.addActionListener(new ActionListener() {
+        license_btn_2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String license_number = pay_license.getText();
-                pay_license.setText("");
+                String license_number = pay_license_2.getText();
+                pay_license_2.setText("");
                 for (String license_key : license_keys) {
                     if (license_number.equals(license_key)) {
                         inner_agri_courses.setVisible(true);
@@ -2023,7 +2023,7 @@ public class Main {
         inner_entre_courses.setLayout(null);
         inner_entre_courses.setVisible(true);
 
-        //Payment Panel For Agri_Food
+        //Payment Panel For Entre_Food
         JPanel pay_pan_2 = new JPanel();
         pay_pan_2.setLayout(null);
         pay_pan_2.setBounds(0, 500, 1920, 1080);
@@ -2033,15 +2033,15 @@ public class Main {
         license_label_2.setFont(new Font("Arial", Font.BOLD, 24));
         license_label_2.setHorizontalAlignment(SwingConstants.CENTER);
 
-        JTextField pay_license_2 = new JTextField();
-        pay_license_2.setBounds(800, 100, 300, 50);
-        pay_license_2.setHorizontalAlignment(SwingConstants.CENTER);
-        pay_license_2.setFont(new Font("Arial", Font.BOLD, 24));
-
-        JButton license_btn_2 = new JButton();
-        license_btn_2.setBounds(1100, 100, 100, 50);
-        license_btn_2.setText("Enter");
-        license_btn_2.setFont(new Font("Arial", Font.BOLD, 24));
+//        JTextField pay_license_2 = new JTextField();
+//        pay_license_2.setBounds(800, 100, 300, 50);
+//        pay_license_2.setHorizontalAlignment(SwingConstants.CENTER);
+//        pay_license_2.setFont(new Font("Arial", Font.BOLD, 24));
+//
+//        JButton license_btn_2 = new JButton();
+//        license_btn_2.setBounds(1100, 100, 100, 50);
+//        license_btn_2.setText("Enter");
+//        license_btn_2.setFont(new Font("Arial", Font.BOLD, 24));
 
 
         JLabel pay_label_2 = new JLabel();
@@ -2052,6 +2052,50 @@ public class Main {
         pay_btn_2.setText("Pay Here");
         pay_btn_2.setBounds(880, 250, 150, 50);
         pay_btn_2.setFont(new Font("Arial", Font.BOLD, 24));
+
+        //License key generated Panel
+        JPanel key_gen_2 = new JPanel();
+        key_gen_2.setLayout(null);
+        key_gen_2.setBounds(0, 500, 1920, 1080);
+
+        JLabel license_key_generated_2 = new JLabel();
+        license_key_generated_2.setBounds(800, 100, 700, 50);
+        license_key_generated_2.setFont(new Font("Arial", Font.BOLD, 24));
+
+        //Accept license key button
+        JButton accept_license_2 = new JButton();
+        accept_license_2.setText("OK");
+        accept_license_2.setFont(new Font("Arial", Font.BOLD, 24));
+        accept_license_2.setBounds(900, 150, 100, 50);
+        // Add to key_gen panel
+        key_gen_2.add(license_key_generated_2);
+        key_gen_2.add(accept_license_2);
+
+        //accept license button action handler
+        accept_license_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                key_gen_2.setVisible(false);
+                pay_pan_2.setVisible(true);
+            }
+        });
+
+        // License keys for agri_food+
+        ArrayList<String> license_keys_2 = new ArrayList<String>();
+        license_keys_2.add("B01");
+        license_keys_2.add("B02");
+        license_keys_2.add("B03");
+        //Pay Button Behavoir
+        pay_btn_2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String random_license_keys_2 = license_keys_2.get((int) Math.floor(Math.random()* (license_keys_2.size())));
+                pay_pan_2.setVisible(false);
+                license_key_generated_2.setText("This is your license key: " + random_license_keys_2);
+                key_gen_2.setVisible(true);
+            }
+        });
+
 
 
         //Add To Pay Panel
@@ -2072,18 +2116,21 @@ public class Main {
         });
 
         //License Enter Button
+        //License Enter Button
         license_btn_2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String license_number_2 = pay_license_2.getText();
                 pay_license_2.setText("");
-                if (license_number_2.equals("001")) {
-                    inner_entre_courses.setVisible(true);
-                    pay_pan_2.setVisible(false);
+                for (String license_key : license_keys_2) {
+                    if (license_number_2.equals(license_key)) {
+                        inner_entre_courses.setVisible(true);
+                        pay_pan_2.setVisible(false);
+                    }
                 }
+
             }
         });
-
 
         // Add JFrame for Entrepreneurship
         JFrame inner_ent = new JFrame();
@@ -2098,6 +2145,7 @@ public class Main {
         inner_ent.add(btn2_folder_icon);
         inner_ent.add(inner_entre_courses);
         inner_ent.add(pay_pan_2);
+        inner_ent.add(key_gen_2);
 
 
 
