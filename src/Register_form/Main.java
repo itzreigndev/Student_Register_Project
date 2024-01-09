@@ -922,27 +922,98 @@ public class Main {
         // Navigation for Frame2
 
         JPanel nav_pan = new JPanel();
-        nav_pan.setBounds(1000, 0, 920, 1080);
-        nav_pan.setBackground(Color.BLUE);
+        nav_pan.setBounds(1100, 30, 920, 1080);
+        nav_pan.setBackground(Color.white);
         nav_pan.setVisible(true);
         nav_pan.setLayout(null);
+        JLabel Sign = new JLabel();
+        Sign.setText("------------------------------------------------------------------------------------");
+        Sign.setBounds(0, 250,1000,10);
+        Sign.setFont(new Font("-apple-system", Font.ITALIC, 25));
+        Sign.setBackground(Color.BLACK);
+
+        ImageIcon identical_to_image = new ImageIcon(Main.class.getResource("three-horizontal-lines-icon.png"));
+        Image identical_to = identical_to_image.getImage().getScaledInstance(25, 20, Image.SCALE_DEFAULT);
+        ImageIcon identical = new ImageIcon(identical_to);
         JLabel navigation = new JLabel();
         navigation.setText("Navigation");
-        navigation.setBounds(80, 250, 500, 50);
-        navigation.setFont(new Font("Aria", Font.BOLD, 30));
-        navigation.setForeground(Color.WHITE);
+        navigation.setIcon(identical);
+        navigation.setBounds(50, 260, 500, 50);
+        navigation.setFont(new Font("-apple-system", Font.PLAIN, 30));
+        navigation.setForeground(Color.BLACK);
+
+        ImageIcon icon_dash_image = new ImageIcon(Main.class.getResource("dashboard-icon.png"));
+        Image icon_dash_ = icon_dash_image.getImage().getScaledInstance(30, 25, Image.SCALE_DEFAULT);
+        ImageIcon dash_icon = new ImageIcon(icon_dash_);
+        JButton home_nav = new JButton();
+        home_nav.setText("Home");
+        home_nav.setIcon(dash_icon);
+        home_nav.setBounds(70, 310, 500, 50);
+        home_nav.setFont(new Font("-apple-system", Font.PLAIN, 25));
+        home_nav.setForeground(Color.BLACK);
+        home_nav.setBorderPainted(false);
+        home_nav.setFocusPainted(false);
+        home_nav.setContentAreaFilled(false);
+        home_nav.setHorizontalAlignment(SwingConstants.LEFT);
+        JButton dash_nav = new JButton();
+        dash_nav.setText("Dashboard");
+        dash_nav.setIcon(dash_icon);
+        dash_nav.setBounds(70, 340, 500, 50);
+        dash_nav.setFont(new Font("-apple-system", Font.PLAIN, 25));
+        dash_nav.setForeground(Color.BLACK);
+        dash_nav.setContentAreaFilled(false);
+        dash_nav.setFocusPainted(false);
+        dash_nav.setBorderPainted(false);
+        dash_nav.setHorizontalAlignment(SwingConstants.LEFT);
+        JButton site_pages = new JButton();
+        site_pages.setText("> Site Pages");
+        site_pages.setBounds(100, 375, 500, 50);
+        site_pages.setFont(new Font("-apple-system", Font.PLAIN, 20));
+        site_pages.setForeground(color.BLACK);
+        site_pages.setBorderPainted(false);
+        site_pages.setHorizontalAlignment(SwingConstants.LEFT);
+        site_pages.setContentAreaFilled(false);
+
         JButton my_courses = new JButton();
-        my_courses.setText("     My Courses");
-        my_courses.setBounds(80, 300, 500, 50);
-        my_courses.setFont(new Font("Aria", Font.BOLD, 24));
-        my_courses.setForeground(color.WHITE);
+        my_courses.setText("> My Courses");
+        my_courses.setBounds(100, 405, 500, 50);
+        my_courses.setFont(new Font("-apple-system", Font.PLAIN, 20));
+        my_courses.setForeground(color.BLACK);
         my_courses.setBorderPainted(false);
         my_courses.setHorizontalAlignment(SwingConstants.LEFT);
         my_courses.setContentAreaFilled(false);
 
+        JLabel Sign02 = new JLabel();
+        Sign02.setText("------------------------------------------------------------------------------------");
+        Sign02.setBounds(0, 490,1000,10);
+        Sign02.setFont(new Font("-apple-system", Font.ITALIC, 25));
+        Sign02.setBackground(Color.BLACK);
+
+        JLabel online_users = new JLabel();
+        online_users.setText("Online Users");
+        online_users.setIcon(identical);
+        online_users.setBounds(50,500,500, 50);
+        online_users.setFont(new Font("-apple-system", Font.PLAIN, 30));
+        online_users.setForeground(Color.BLACK);
+
+        JLabel online_text = new JLabel();
+        online_text.setText("12 online users ( last 5 minutes )");
+        online_text.setBounds(100,550,500, 50);
+        online_text.setFont(new Font("-apple-system", Font.PLAIN, 20));
+        online_text.setForeground(Color.BLACK);
+
+
+
         // Add to panel
         nav_pan.add(my_courses);
+        nav_pan.add(Sign);
         nav_pan.add(navigation);
+        nav_pan.add(dash_nav);
+        nav_pan.add(home_nav);
+        nav_pan.add(site_pages);
+        nav_pan.add(Sign02);
+        nav_pan.add(online_users);
+        nav_pan.add(online_text);
 
 
 
