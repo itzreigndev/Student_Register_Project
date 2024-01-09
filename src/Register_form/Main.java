@@ -1555,6 +1555,32 @@ public class Main {
         pay_btn.setBounds(880, 250, 150, 50);
         pay_btn.setFont(new Font("Arial", Font.BOLD, 24));
 
+        //License key generated Panel
+        JPanel key_gen = new JPanel();
+        key_gen.setLayout(null);
+        key_gen.setBounds(0, 500, 1920, 1080);
+
+        JLabel license_key_generated = new JLabel();
+        license_key_generated.setBounds(800, 100, 700, 50);
+        license_key_generated.setFont(new Font("Arial", Font.BOLD, 24));
+
+        //Accept license key button
+        JButton accept_license = new JButton();
+        accept_license.setText("OK");
+        accept_license.setFont(new Font("Arial", Font.BOLD, 24));
+        accept_license.setBounds(900, 150, 100, 50);
+        // Add to key_gen panel
+        key_gen.add(license_key_generated);
+        key_gen.add(accept_license);
+
+        //accept license button action handler
+        accept_license.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                key_gen.setVisible(false);
+                pay_pan.setVisible(true);
+            }
+        });
 
         //Add To Pay Panel
         pay_pan.add(pay_label);
@@ -1572,9 +1598,10 @@ public class Main {
         pay_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                inner_agri_courses.setVisible(true);
-                String random_license_keys = license_keys.get((int) Math.floor(Math.random()*3));
+                String random_license_keys = license_keys.get((int) Math.floor(Math.random()* (license_keys.size())));
                 pay_pan.setVisible(false);
+                license_key_generated.setText("This is your license key: " + random_license_keys);
+                key_gen.setVisible(true);
             }
         });
 
@@ -1611,6 +1638,7 @@ public class Main {
         inner_agri.add(agri_food_button);
         inner_agri.add(inner_agri_courses);
         inner_agri.add(pay_pan);
+        inner_agri.add(key_gen);
 
         //Show the Frame when clicked
         btn_course.addActionListener(new ActionListener() {
