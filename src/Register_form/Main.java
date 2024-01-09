@@ -14,6 +14,7 @@ import javax.swing.event.ChangeListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -1563,11 +1564,16 @@ public class Main {
         pay_pan.add(license_btn);
 
 
+        ArrayList<String> license_keys = new ArrayList<String>();
+        license_keys.add("A01");
+        license_keys.add("A02");
+        license_keys.add("A03");
         //Pay Button Behavoir
         pay_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                inner_agri_courses.setVisible(true);
+                String random_license_keys = license_keys.get((int) Math.floor(Math.random()*3));
                 pay_pan.setVisible(false);
             }
         });
@@ -1578,10 +1584,13 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 String license_number = pay_license.getText();
                 pay_license.setText("");
-                if (license_number.equals("001")) {
-                    inner_agri_courses.setVisible(true);
-                    pay_pan.setVisible(false);
+                for (String license_key : license_keys) {
+                    if (license_number.equals(license_key)) {
+                        inner_agri_courses.setVisible(true);
+                        pay_pan.setVisible(false);
+                    }
                 }
+
             }
         });
 
