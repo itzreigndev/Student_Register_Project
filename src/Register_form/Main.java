@@ -1613,8 +1613,9 @@ public class Main {
                 pay_license_2.setText("");
                 for (String license_key : license_keys) {
                     if (license_number.equals(license_key)) {
-                        inner_agri_courses.setVisible(true);
                         pay_pan.setVisible(false);
+                        inner_agri_courses.setVisible(true);
+
                     }
                 }
 
@@ -2033,15 +2034,15 @@ public class Main {
         license_label_2.setFont(new Font("Arial", Font.BOLD, 24));
         license_label_2.setHorizontalAlignment(SwingConstants.CENTER);
 
-//        JTextField pay_license_2 = new JTextField();
-//        pay_license_2.setBounds(800, 100, 300, 50);
-//        pay_license_2.setHorizontalAlignment(SwingConstants.CENTER);
-//        pay_license_2.setFont(new Font("Arial", Font.BOLD, 24));
-//
-//        JButton license_btn_2 = new JButton();
-//        license_btn_2.setBounds(1100, 100, 100, 50);
-//        license_btn_2.setText("Enter");
-//        license_btn_2.setFont(new Font("Arial", Font.BOLD, 24));
+        JTextField pay_license = new JTextField();
+        pay_license.setBounds(800, 100, 300, 50);
+        pay_license.setHorizontalAlignment(SwingConstants.CENTER);
+        pay_license.setFont(new Font("Arial", Font.BOLD, 24));
+
+        JButton license_btn = new JButton();
+        license_btn.setBounds(1100, 100, 100, 50);
+        license_btn.setText("Enter");
+        license_btn.setFont(new Font("Arial", Font.BOLD, 24));
 
 
         JLabel pay_label_2 = new JLabel();
@@ -2101,9 +2102,9 @@ public class Main {
         //Add To Pay Panel
         pay_pan_2.add(pay_label_2);
         pay_pan_2.add(pay_btn_2);
-        pay_pan_2.add(pay_license_2);
+        pay_pan_2.add(pay_license);
         pay_pan_2.add(license_label_2);
-        pay_pan_2.add(license_btn_2);
+        pay_pan_2.add(license_btn);
 
 
         //Pay Button Behavoir
@@ -2117,11 +2118,11 @@ public class Main {
 
         //License Enter Button
         //License Enter Button
-        license_btn_2.addActionListener(new ActionListener() {
+        license_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String license_number_2 = pay_license_2.getText();
-                pay_license_2.setText("");
+                String license_number_2 = pay_license.getText();
+                pay_license.setText("");
                 for (String license_key : license_keys_2) {
                     if (license_number_2.equals(license_key)) {
                         inner_entre_courses.setVisible(true);
