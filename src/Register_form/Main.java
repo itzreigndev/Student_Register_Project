@@ -1191,10 +1191,19 @@ public class Main extends javax.swing.JFrame{
         site_pages.setHorizontalAlignment(SwingConstants.LEFT);
         site_pages.setContentAreaFilled(false);
 
+        JButton my_courses = new JButton();
+        my_courses.setText("> My Courses");
+        my_courses.setBounds(100, 405, 500, 50);
+        my_courses.setFont(new Font("-apple-system", Font.PLAIN, 20));
+        my_courses.setForeground(color.BLACK);
+        my_courses.setBorderPainted(false);
+        my_courses.setHorizontalAlignment(SwingConstants.LEFT);
+        my_courses.setContentAreaFilled(false);
 
-        ImageIcon rs_minusbar_design_image= new ImageIcon(Main.class.getResource("icons8-top-header-grid-sections-parting-square-bars-48.jpg"));
-        Image rs_minusbar_designi= rs_minusbar_design_image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-        ImageIcon rs_minusbar_design= new ImageIcon(rs_minusbar_designi);
+
+//        ImageIcon rs_minusbar_design_image= new ImageIcon(Main.class.getResource("icons8-top-header-grid-sections-parting-square-bars-48.jpg"));
+//        Image rs_minusbar_designi= rs_minusbar_design_image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+//        ImageIcon rs_minusbar_design= new ImageIcon(rs_minusbar_designi);
 
         JLabel Sign02 = new JLabel();
         Sign02.setText("------------------------------------------------------------------------------------");
@@ -1217,7 +1226,7 @@ public class Main extends javax.swing.JFrame{
 
 
         // Add to panel
-//        nav_pan.add(my_courses);
+        nav_pan.add(my_courses);
         nav_pan.add(Sign);
         nav_pan.add(navigation);
         nav_pan.add(dash_nav);
