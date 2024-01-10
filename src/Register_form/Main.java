@@ -31,6 +31,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class Main extends javax.swing.JFrame{
     static boolean firstTime = true;
@@ -160,10 +164,7 @@ public class Main extends javax.swing.JFrame{
         JLabel google_label = new JLabel("", google, JLabel.CENTER);
         google_label.setIcon(googlelogo);
         google_label.setBounds(200, 400, 40, 40);
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
+
 
         ImageIcon twitter = new ImageIcon(Main.class.getResource("icons8-twitter-48.jpg"));
         Image twitter_logo = twitter.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
@@ -1220,18 +1221,10 @@ import java.util.ArrayList;
         l_irs_minusbar_design.setText("Navigation");
         l_irs_minusbar_design.setFont(new Font("Arial", Font.BOLD, 32));
 
-        JPanel p_rs_courses= new JPanel();
-        p_rs_courses.setBounds(1030, 150, 450, 650);
-        p_rs_courses.setBackground(color);
-        p_rs_courses.setLayout(null);
-        p_rs_courses.setVisible(true);
 
-
-        //Contain element in Panel right side courses
-        p_rs_courses.add(l_irs_minusbar_design);
 
         // Add to panel
-        nav_pan.add(my_courses);
+//        nav_pan.add(my_courses);
         nav_pan.add(Sign);
         nav_pan.add(navigation);
         nav_pan.add(dash_nav);
@@ -1279,7 +1272,6 @@ import java.util.ArrayList;
         fcourses.add(btn_go);
         fcourses.add(lcourses);
         fcourses.add(p_groupcourses);
-        fcourses.add(p_rs_courses);
         fcourses.add(nav_pan);
 
         //****************************************************Behavoir
