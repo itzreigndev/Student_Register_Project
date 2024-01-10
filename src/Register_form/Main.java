@@ -1,4 +1,7 @@
+
 package Register_form;
+import com.mysql.jdbc.Statement;
+import com.sun.jdi.connect.spi.Connection;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,17 +12,210 @@ import javax.swing.table.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.Desktop;
+import java.net.URISyntaxException;
+//Database
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class Main extends javax.swing.JFrame{
+    static boolean firstTime = true;
+
+
+    public static void main(String[] args) throws SQLException {
+
+        //Code for Database
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (Exception e) {
+            System.out.println("MySQL JDBC Driver not found.");
+            e.printStackTrace();
+        }
+        System.out.println("MySQL JDBC Driver Registered!");
+
+        Connection connection= null;
+
+        try {
+            connection= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/project_register_itc", "root", "");
+            System.out.println("Connection completed");
+        } catch (Exception e) {
+            System.out.println("Connection Failed! Check coutput console");
+            e.printStackTrace();
+        }
+
+        if(connection !=null){
+            System.out.println("Connected to the database!");
+        }else{
+            System.out.println("Failed to make connection!");
+        }
+
+
+        //Login Frame
+
+        JFrame flogin= new JFrame();
+        Font font_login= new Font("Arial", Font.BOLD, 18);
+
+        ImageIcon background = new ImageIcon(Main.class.getResource("background_login.png"));
+        Image background_logo = background.getImage().getScaledInstance(1540, 900, Image.SCALE_DEFAULT);
+
+        ImageIcon backgroundlogo = new ImageIcon(background_logo);
+
+        JLabel background_label = new JLabel("", background, JLabel.CENTER);
+        background_label.setIcon(backgroundlogo);
+        background_label.setFont(font_login);
+        background_label.setBounds(0, 0, 1540, 900);
+
+
+
+        JLabel login_label= new JLabel("Login");
+        login_label.setFont(new Font("Times New Roman", Font.BOLD, 28));
+        login_label.setBounds(200, 20, 100, 30);
+
+        JLabel username_label= new JLabel("User name");
+        username_label.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
+        username_label.setBounds(30, 70, 100, 20);
+        username_label.setForeground(new Color(203,200,200));
+
+        JTextField txt_username= new JTextField();
+        txt_username.setFont(new Font("Arial",Font.BOLD, 18));
+        Border border= BorderFactory.createLineBorder(new Color(203,200,200), 1);
+        txt_username.setBorder(border);
+        txt_username.setBounds(30, 100, 400, 40);
+        txt_username.setForeground(Color.black);
+
+        JLabel password_label= new JLabel("Password");
+        password_label.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
+        password_label.setBounds(30, 150, 100, 20);
+        password_label.setForeground(new Color(203,200,200));
+
+        JPasswordField txt_password= new JPasswordField();
+        txt_password.setFont(new Font("Arial",Font.BOLD, 18));
+        txt_password.setBorder(border);
+        txt_password.setBounds(30, 180, 400, 40);
+        txt_password.setForeground(Color.black);
+
+
+        JLabel forget_label= new JLabel("Forgot password?");
+        forget_label.setFont(new Font("Arial", Font.CENTER_BASELINE, 18));
+        forget_label.setBounds(300, 230, 200, 20);
+        forget_label.setForeground(new Color(169,163,163));
+
+        JButton btn_login= new JButton("Login");
+        btn_login.setForeground(Color.white);
+        btn_login.setBounds(50, 270, 350, 40);
+        btn_login.setBackground(new Color(140, 255, 140));
+        btn_login.setBorder(null);
+
+        //Button login
+
+        btn_login.addMouseListener(new MouseAdapter(){
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn_login.setBackground(Color.green);
+            }
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_login.setBackground(Color.blue);
+            }
+
+        });
+
+        JLabel signup_label= new JLabel("Not a member? Sign up with");
+        signup_label.setBounds(110, 340, 300, 30);
+        signup_label.setForeground(Color.red);
+        signup_label.setFont(font_login);
+
+        ImageIcon facebook = new ImageIcon(Main.class.getResource("icons8-facebook-48.png"));
+        Image facebook_logo = facebook.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+
+        ImageIcon facebooklogo = new ImageIcon(facebook_logo);
+
+        JLabel facebook_label = new JLabel("", facebook, JLabel.CENTER);
+        facebook_label.setIcon(facebooklogo);
+        facebook_label.setBounds(110, 400, 40,40);
+
+
+
+        ImageIcon google = new ImageIcon(Main.class.getResource("icons8-google-48.png"));
+        Image google_logo = google.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
+
+        ImageIcon googlelogo = new ImageIcon(google_logo);
+
+        JLabel google_label = new JLabel("", google, JLabel.CENTER);
+        google_label.setIcon(googlelogo);
+        google_label.setBounds(200, 400, 40, 40);
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class Main {
+        ImageIcon twitter = new ImageIcon(Main.class.getResource("icons8-twitter-48.jpg"));
+        Image twitter_logo = twitter.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
 
-    public static void main(String[] args) {
+        ImageIcon twitterlogo = new ImageIcon(twitter_logo);
+
+        JLabel twitter_label = new JLabel("", twitter, JLabel.CENTER);
+        twitter_label.setIcon(twitterlogo);
+        twitter_label.setBounds(290, 400, 40, 40);
+
+
+
+        JPanel p_containlogin= new JPanel();
+        p_containlogin.setVisible(true);
+        p_containlogin.setBounds(520, 100,470, 500);
+        p_containlogin.setBackground(Color.white);
+        p_containlogin.setLayout(null);
+
+        p_containlogin.add(login_label);
+        p_containlogin.add(username_label);
+        p_containlogin.add(txt_username);
+        p_containlogin.add(password_label);
+        p_containlogin.add(txt_password);
+        p_containlogin.add(forget_label);
+        p_containlogin.add(btn_login);
+        p_containlogin.add(signup_label);
+        p_containlogin.add(facebook_label);
+        p_containlogin.add(google_label);
+        p_containlogin.add(twitter_label);
+
+        background_label.add(p_containlogin);
+
+        JPanel p_login= new JPanel();
+        p_login.setSize(1540, 900);
+        p_login.setVisible(true);
+
+
+        p_login.add(background_label);
+
+
+        flogin.setSize(1540, 900);
+        flogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        flogin.setLocationRelativeTo(null);
+        flogin.setResizable(false);
+        flogin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        flogin.setBackground(Color.cyan);
+        flogin.setVisible(true);
+
+        flogin.add(p_login);
+
         JFrame fmain= new JFrame();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-YYYY");
 
         Font font= new Font("Time New Roman", Font.BOLD, 20);
         //Header
@@ -32,6 +228,10 @@ public class Main {
         headerLabel.setIcon(itc_logo);
         headerLabel.setFont(new Font("Time New Roman", Font.BOLD, 40));
         headerLabel.setBounds(20, 5, 100, 100);
+
+        //User account
+
+        //**************************************************************************
 
 
 
@@ -225,6 +425,14 @@ public class Main {
         ImageIcon next_img= new ImageIcon(imagenext);
 
 
+        JButton btn_next= new JButton("Next");
+        btn_next.setBounds(520, 580, 130, 45);
+        btn_next.setIcon(next_img);
+        btn_next.setFont(new Font("Times New Roman", Font.BOLD, 22));
+        btn_next.setBorder(new LineBorder(Color.red, 2));
+        btn_next.setBackground(Color.black);
+        btn_next.setForeground(Color.white);
+
         JButton btn_folder= new JButton("Next");
         btn_folder.setBounds(520, 580, 130, 45);
         btn_folder.setIcon(next_img);
@@ -232,8 +440,6 @@ public class Main {
         btn_folder.setBorder(new LineBorder(Color.red, 2));
         btn_folder.setBackground(Color.black);
         btn_folder.setForeground(Color.white);
-
-
 
         //Button
 
@@ -325,6 +531,7 @@ public class Main {
         p_rightside.add(btn_add);
         p_rightside.add(btn_clear);
         p_rightside.add(btn_exit);
+        p_rightside.add(btn_next);
         p_rightside.add(btn_folder);
 
 
@@ -404,6 +611,14 @@ public class Main {
         model.addRow(row4);
         Object row5[]={n++, "Tom", "Sep 31 1999", "Male", "Kratie", "066 666 666", "x,nvnxb@gmail.com", "021 34 34 55"};
         model.addRow(row5);
+        Object row6[]={n++, "Kratos", "Oct 07 1984", "Male", "Phnom Penh", "019 222 22 22", "kratos@gmail.com", "019 222 22 22"};
+        model.addRow(row6);
+        Object row7[]={n++, "Angela", "Jun 11 2001", "Female", "Prey Veng", "011 111 111", "Angela@gmail.com", "012 345 543"};
+        model.addRow(row7);
+        Object row8[]={n++, "Vannda", "Oct 07 1984", "Male", "Phnom Penh", "011 000 0001", "vannda@gmail.com", "011 000 0001"};
+        model.addRow(row8);
+        Object row9[]={n++, "Panha", "Aug 11 2000", "Male", "Phnom Penh", "", "Panha@gmail.com", "011 000 0001"};
+        model.addRow(row9);
         JPanel p_update= new JPanel();
         p_update.setLayout(null);
         p_update.setBorder(new LineBorder(Color.black, 4));
@@ -628,7 +843,6 @@ public class Main {
         p_agri.add(l_agri);
         p_agri.add(btn_course);
         p_agri.add(l_ikey);
-
 
         //EntrepreneurShip
 
@@ -906,7 +1120,9 @@ public class Main {
         pheader.setBorder(new LineBorder(Color.yellow, 2));
         pheader.add(headerLabel);
 
-        fmain.setVisible(true);
+
+        //Change here
+        fmain.setVisible(false);
         fmain.setSize(1540, 800);
         fmain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fmain.setLocationRelativeTo(null);
@@ -974,14 +1190,10 @@ public class Main {
         site_pages.setHorizontalAlignment(SwingConstants.LEFT);
         site_pages.setContentAreaFilled(false);
 
-        JButton my_courses = new JButton();
-        my_courses.setText("> My Courses");
-        my_courses.setBounds(100, 405, 500, 50);
-        my_courses.setFont(new Font("-apple-system", Font.PLAIN, 20));
-        my_courses.setForeground(color.BLACK);
-        my_courses.setBorderPainted(false);
-        my_courses.setHorizontalAlignment(SwingConstants.LEFT);
-        my_courses.setContentAreaFilled(false);
+
+        ImageIcon rs_minusbar_design_image= new ImageIcon(Main.class.getResource("icons8-top-header-grid-sections-parting-square-bars-48.jpg"));
+        Image rs_minusbar_designi= rs_minusbar_design_image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        ImageIcon rs_minusbar_design= new ImageIcon(rs_minusbar_designi);
 
         JLabel Sign02 = new JLabel();
         Sign02.setText("------------------------------------------------------------------------------------");
@@ -1002,7 +1214,21 @@ public class Main {
         online_text.setFont(new Font("-apple-system", Font.PLAIN, 20));
         online_text.setForeground(Color.BLACK);
 
+        JLabel l_irs_minusbar_design= new JLabel();
+        l_irs_minusbar_design.setIcon(rs_minusbar_design);
+        l_irs_minusbar_design.setBounds(10, 50, 450, 40);
+        l_irs_minusbar_design.setText("Navigation");
+        l_irs_minusbar_design.setFont(new Font("Arial", Font.BOLD, 32));
 
+        JPanel p_rs_courses= new JPanel();
+        p_rs_courses.setBounds(1030, 150, 450, 650);
+        p_rs_courses.setBackground(color);
+        p_rs_courses.setLayout(null);
+        p_rs_courses.setVisible(true);
+
+
+        //Contain element in Panel right side courses
+        p_rs_courses.add(l_irs_minusbar_design);
 
         // Add to panel
         nav_pan.add(my_courses);
@@ -1014,8 +1240,6 @@ public class Main {
         nav_pan.add(Sign02);
         nav_pan.add(online_users);
         nav_pan.add(online_text);
-
-
 
         h_blocks_btn.addActionListener(new ActionListener() {
             @Override
@@ -1043,7 +1267,7 @@ public class Main {
         //*****************Frame 2********************
 
         JFrame fcourses= new JFrame();
-        fcourses.setSize(1920, 1080);
+        fcourses.setSize(1540, 900);
         fcourses.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fcourses.setLayout(null);
         fcourses.setLocationRelativeTo(null);
@@ -1055,12 +1279,125 @@ public class Main {
         fcourses.add(btn_go);
         fcourses.add(lcourses);
         fcourses.add(p_groupcourses);
+        fcourses.add(p_rs_courses);
         fcourses.add(nav_pan);
-
 
         //****************************************************Behavoir
 
+        //Database code
+        Connection con= null;
+        String URL= "jdbc:mysql://localhost/student_register_itc";
+        String driver= "com.mysql.jdbc.Driver";
+        String user= "root";
+        String password= "";
+        Statement stmt;
+        String query;
+        ResultSet rs;
+
+        // try and connect to the database
+        try {
+            Class.forName(driver).newInstance();
+            con = (Connection) DriverManager.getConnection(URL, user, password);
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+        }
+
+        //Socail button
+//********************************************
+
+//Google click
+        google_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://www.google.com"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
+
+        facebook_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://www.facebook.com"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
+
+        forget_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://support.google.com/mail/answer/41078?hl=en&co=GENIE.Platform%3DDesktop"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
+
+        twitter_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://www.twitter.com"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
+
+
+        //Button login
+        btn_login.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!txt_username.getText().equals("") && !txt_password.getText().equals("")){
+                    fmain.setVisible(true);
+                }
+            }
+
+        });
+
         //button next
+
+
+        btn_next.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fcourses.setVisible(true);
+                fmain.setVisible(false);
+            }
+        });
+
+        btn_next.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn_next.setBackground(Color.GREEN);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_next.setBackground(Color.red);
+            }
+        });
 
         btn_folder.addActionListener(new ActionListener(){
             @Override
@@ -1081,7 +1418,6 @@ public class Main {
             }
 
         });
-
 
         //button exit
         btn_exit.addActionListener(new ActionListener(){
@@ -1108,27 +1444,51 @@ public class Main {
             }
         });
 
-
-        //Button Add
-
+        //Button add
         btn_add.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                int N=6;
-                String name= tname.getText();
-                String dob= ((JTextField) date.getDateEditor().getUiComponent()).getText();
-                String gender;
-                if(b_male.isSelected()){
-                    gender= "Male";
-                }else{
-                    gender= "Female";
+                try {
+                    String name= tname.getText();
+                    String dob= ((JTextField) date.getDateEditor().getUiComponent()).getText();
+                    String gender;
+                    if(b_male.isSelected()){
+                        gender= "Male";
+                    }else{
+                        gender= "Female";
+                    }
+                    String address=combo_Address.getSelectedItem().toString();
+                    String phone= tphone.getText();
+                    String email= temail.getText();
+                    String telegram= ttelegram.getText();
+                    int id=9;
+                    for(int i=0; i<tb.getRowCount(); i++){
+                        id= Integer.parseInt(tb.getValueAt(i, 0).toString());
+                    }
+                    id++;
+                    Object row[]={id,name, dob, gender, address, phone, email, telegram};
+                    model.addRow(row);
+                    tname.setText(null);
+                    date.setDate(null);
+
+                    combo_Address.setSelectedIndex(0);
+                    tphone.setText(null);
+                    temail.setText(null);
+                    ttelegram.setText(null);
+                    tguardian_phone.setText(null);
+                    tfather.setText(null);
+                    tmother.setText(null);
+                    tguardian.setText(null);
+                    tguardian_phone.setText(null);
+                    limage.setVisible(false);
+                    p_profile.add(limage);
+                    b_male.setSelected(false);
+                    b_female.setSelected(false);
+
+
+                } catch (Exception t) {
+                    JOptionPane.showMessageDialog(null, e);
                 }
-                String address=combo_Address.getSelectedItem().toString();
-                String phone= tphone.getText();
-                String email= temail.getText();
-                String telegram= ttelegram.getText();
-                Object row[]={N,name, dob, gender, address, phone, email, telegram};
-                model.addRow(row);
             }
         });
 
@@ -1181,6 +1541,7 @@ public class Main {
                 }
                 if(checkStudent==false){
                     JOptionPane.showMessageDialog(null, "Student not found..!");
+
                 }
             }
         });
@@ -1196,6 +1557,15 @@ public class Main {
                     if(result==JOptionPane.YES_OPTION){
                         model.removeRow(row);
                         JOptionPane.showMessageDialog(null, "Deleted!");
+                        tname.setText(null);
+                        date.setDate(null);
+                        b_male.setSelected(false);
+                        b_female.setSelected(false);
+                        tfather.setText(null);
+                        tmother.setText(null);
+                        combo_Address.setSelectedIndex(0);
+                        tguardian.setText(null);
+                        tguardian_phone.setText(null);
                         break;
                     }else if(result== JOptionPane.NO_OPTION || result== JOptionPane.CANCEL_OPTION){
                         JOptionPane.showMessageDialog(null, "Cancel..!");
@@ -1206,9 +1576,124 @@ public class Main {
 
         });
 
+        //mouse click table
+//        tb.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+//            @Override
+//            public void valueChanged(ListSelectionEvent event) {
+//                if(!event.getValueIsAdjusting()){
+//                    int row= tb.getSelectedRow();
+//                    DefaultTableModel model= (DefaultTableModel)tb.getModel();
+//                    tname.setText(model.getValueAt(row, 1).toString());
+//                    try {
+//                        Date date1= (Date) tb.getValueAt(row, 2);
+//                        date.setDate(date1);
+//                    } catch (Exception e) {
+//                    }
+//                    String gender= model.getValueAt(row, 3).toString();
+//                    if(gender.equals("Male")){
+//                        b_male.setSelected(true);
+//                    }else{
+//                        b_female.setSelected(true);
+//                    }
+//                    combo_Address.setSelectedItem(model.getValueAt(row, 4));
+//                    tphone.setText(model.getValueAt(row, 5).toString());
+//                    temail.setText(model.getValueAt(row, 6).toString());
+//                    ttelegram.setText(model.getValueAt(row, 7).toString());
+//                }
+//            }
+//        });
         //Update Button
+        JButton btn_update1= new JButton("Update");
+        btn_update1.setBounds(200, 580, 200, 50);
+        btn_update1.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+        btn_update1.setBackground(new Color(255, 0, 127));
+        btn_update1.setForeground(Color.white);
+        btn_update1.setFont(new Font("Times New Roman", Font.BOLD, 22));
+        btn_update1.setVisible(false);
+        p_rightside.add(btn_update1);
+
+        //Button Update
+        btn_update.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tabbedPane.setSelectedIndex(0);
+                btn_add.setVisible(false);
+                btn_clear.setVisible(false);
+                btn_exit.setVisible(false);
+                btn_next.setVisible(false);
+                btn_update1.setVisible(true);
+//        tb.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+//            @Override
+//            public void valueChanged(ListSelectionEvent event) {
+//                if(!event.getValueIsAdjusting()){
+//                    int row= tb.getSelectedRow();
+//                    DefaultTableModel model= (DefaultTableModel)tb.getModel();
+//                    tname.setText(model.getValueAt(row, 1).toString());
+//                    try {
+//                        Date date1= (Date) tb.getValueAt(row, 2);
+//                        date.setDate(date1);
+//                    } catch (Exception e) {
+//                    }
+//                    String gender= model.getValueAt(row, 3).toString();
+//                    if(gender.equals("Male")){
+//                        b_male.setSelected(true);
+//                    }else{
+//                        b_female.setSelected(true);
+//                    }
+//                    combo_Address.setSelectedItem(model.getValueAt(row, 4));
+//                    tphone.setText(model.getValueAt(row, 5).toString());
+//                    temail.setText(model.getValueAt(row, 6).toString());
+//                    ttelegram.setText(model.getValueAt(row, 7).toString());
+//                }
+//            }
+//        });
 
 
+            }
+        });
+
+        btn_update1.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String name=tname.getText();
+                    String dob;
+                    if (date.getDate() == null) {
+                        date.setDate(new Date());
+                    }
+                    dob = sdf.format(date.getDate());
+                    String gender;
+                    if(b_male.isSelected()){
+                        gender="Male";
+                    }
+                    else{
+                        gender="Female";
+                    }
+                    String currentAddress= combo_Address.getSelectedItem().toString();
+                    String phoneNumber= tphone.getText();
+                    String email= temail.getText();
+                    String telegramNumber= ttelegram.getText();
+                    int row= tb.getSelectedRow();
+                    DefaultTableModel model= (DefaultTableModel)tb.getModel();
+                    model.setValueAt(row+1, row,0);
+                    model.setValueAt(name, row, 1);
+                    model.setValueAt(dob, row, 2);
+                    model.setValueAt(gender, row, 3);
+                    model.setValueAt(currentAddress, row, 4);
+                    model.setValueAt(phoneNumber, row, 5);
+                    model.setValueAt(email, row, 6);
+                    model.setValueAt(telegramNumber, row, 7);
+                    JOptionPane.showMessageDialog(null, "Update successfully");
+                    btn_update1.setVisible(false);
+                    btn_clear.setVisible(true);
+                    btn_exit.setVisible(true);
+                    btn_add.setVisible(true);
+                    btn_next.setVisible(true);
+                } catch (Exception t) {
+                    t.printStackTrace();
+                }
+            }
+        });
 
         //Click tabbedpane
         tabbedPane.addChangeListener(new ChangeListener(){
@@ -1282,12 +1767,12 @@ public class Main {
         new_home_btn.setIcon(home);
 
         //Copy From header_courses
-        
+
         JLabel new_header_courses = new JLabel("   Agri-Food Supply Chain", profile, JLabel.CENTER);
         new_header_courses.setIcon(moodle_profile_pic);
         new_header_courses.setFont(new Font("Rubik Doodle Shadow", Font.BOLD, 45));
         new_header_courses.setBounds(20, 10, 1400, 140);
-        
+
         //Copy From p_ctop
 
         JPanel new_p_ctop= new JPanel();
