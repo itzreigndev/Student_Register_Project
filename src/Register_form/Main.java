@@ -1201,9 +1201,6 @@ public class Main extends javax.swing.JFrame{
         my_courses.setContentAreaFilled(false);
 
 
-//        ImageIcon rs_minusbar_design_image= new ImageIcon(Main.class.getResource("icons8-top-header-grid-sections-parting-square-bars-48.jpg"));
-//        Image rs_minusbar_designi= rs_minusbar_design_image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-//        ImageIcon rs_minusbar_design= new ImageIcon(rs_minusbar_designi);
 
         JLabel Sign02 = new JLabel();
         Sign02.setText("------------------------------------------------------------------------------------");
