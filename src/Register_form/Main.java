@@ -1215,13 +1215,6 @@ public class Main extends javax.swing.JFrame{
         online_text.setFont(new Font("-apple-system", Font.PLAIN, 20));
         online_text.setForeground(Color.BLACK);
 
-        JLabel l_irs_minusbar_design= new JLabel();
-        l_irs_minusbar_design.setIcon(rs_minusbar_design);
-        l_irs_minusbar_design.setBounds(10, 50, 450, 40);
-        l_irs_minusbar_design.setText("Navigation");
-        l_irs_minusbar_design.setFont(new Font("Arial", Font.BOLD, 32));
-
-
 
         // Add to panel
 //        nav_pan.add(my_courses);
