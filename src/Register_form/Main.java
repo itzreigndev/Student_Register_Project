@@ -1,6 +1,7 @@
 
 package Register_form;
-//import com.sun.jdi.connect.spi.Connection;
+import com.mysql.jdbc.Statement;
+import com.sun.jdi.connect.spi.Connection;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,9 +19,14 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.Desktop;
+import java.net.URISyntaxException;
 //Database
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -29,41 +35,42 @@ import java.sql.ResultSet;
 public class Main extends javax.swing.JFrame{
     static boolean firstTime = true;
 
-    //Code database
-
-//        PreparedStatement ps;
-//        ResultSet r;
-//        String sql;
-//
-//        public void GetDataFromDb(){
-//            try {
-//                sql="Select *From student_register";
-//                ps=connection().prepareStatement(sql);
-//                r=  ps.executeQuery();
-//            } catch (Exception e) {
-//            }
-//        }
-//
-//        Connection connection(){
-//        Connection con = null;
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/db8-12","root","");
-//            System.out.println("Completed.....");
-//        } catch (ClassNotFoundException | SQLException e) {
-//            System.err.println("Connection Error: "+e.getMessage());
-//        }
-//        return con;}
-
 
     public static void main(String[] args) throws SQLException {
+
+        //Code for Database
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (Exception e) {
+            System.out.println("MySQL JDBC Driver not found.");
+            e.printStackTrace();
+        }
+        System.out.println("MySQL JDBC Driver Registered!");
+
+        Connection connection= null;
+
+        try {
+            connection= (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/project_register_itc", "root", "");
+            System.out.println("Connection completed");
+        } catch (Exception e) {
+            System.out.println("Connection Failed! Check coutput console");
+            e.printStackTrace();
+        }
+
+        if(connection !=null){
+            System.out.println("Connected to the database!");
+        }else{
+            System.out.println("Failed to make connection!");
+        }
+
 
         //Login Frame
 
         JFrame flogin= new JFrame();
         Font font_login= new Font("Arial", Font.BOLD, 18);
 
-        ImageIcon background = new ImageIcon(Main.class.getResource("background_login.jpg"));
+        ImageIcon background = new ImageIcon(Main.class.getResource("background_login.png"));
         Image background_logo = background.getImage().getScaledInstance(1540, 900, Image.SCALE_DEFAULT);
 
         ImageIcon backgroundlogo = new ImageIcon(background_logo);
@@ -96,7 +103,7 @@ public class Main extends javax.swing.JFrame{
         password_label.setBounds(30, 150, 100, 20);
         password_label.setForeground(new Color(203,200,200));
 
-        JTextField txt_password= new JTextField();
+        JPasswordField txt_password= new JPasswordField();
         txt_password.setFont(new Font("Arial",Font.BOLD, 18));
         txt_password.setBorder(border);
         txt_password.setBounds(30, 180, 400, 40);
@@ -134,7 +141,7 @@ public class Main extends javax.swing.JFrame{
         signup_label.setForeground(Color.red);
         signup_label.setFont(font_login);
 
-        ImageIcon facebook = new ImageIcon(Main.class.getResource("icons8-facebook-48.jpg"));
+        ImageIcon facebook = new ImageIcon(Main.class.getResource("icons8-facebook-48.png"));
         Image facebook_logo = facebook.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
 
         ImageIcon facebooklogo = new ImageIcon(facebook_logo);
@@ -145,7 +152,7 @@ public class Main extends javax.swing.JFrame{
 
 
 
-        ImageIcon google = new ImageIcon(Main.class.getResource("icons8-google-48.jpg"));
+        ImageIcon google = new ImageIcon(Main.class.getResource("icons8-google-48.png"));
         Image google_logo = google.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
 
         ImageIcon googlelogo = new ImageIcon(google_logo);
@@ -154,7 +161,7 @@ public class Main extends javax.swing.JFrame{
         google_label.setIcon(googlelogo);
         google_label.setBounds(200, 400, 40, 40);
 
-        ImageIcon twitter = new ImageIcon(Main.class.getResource("icons8-twitter-48.jpg"));
+        ImageIcon twitter = new ImageIcon(Main.class.getResource("icons8-twitter-48.png"));
         Image twitter_logo = twitter.getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT);
 
         ImageIcon twitterlogo = new ImageIcon(twitter_logo);
@@ -1112,7 +1119,7 @@ public class Main extends javax.swing.JFrame{
         //*****************Frame 2********************\
 
 
-        ImageIcon rs_minusbar_design_image= new ImageIcon(Main.class.getResource("icons8-top-header-grid-sections-parting-square-bars-48.jpg"));
+        ImageIcon rs_minusbar_design_image= new ImageIcon(Main.class.getResource("icons8-top-header-grid-sections-parting-square-bars-48.png"));
         Image rs_minusbar_designi= rs_minusbar_design_image.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon rs_minusbar_design= new ImageIcon(rs_minusbar_designi);
 
@@ -1153,6 +1160,86 @@ public class Main extends javax.swing.JFrame{
         //****************************************************Behavoir
 
         //Database code
+        Connection con= null;
+        String URL= "jdbc:mysql://localhost/student_register_itc";
+        String driver= "com.mysql.jdbc.Driver";
+        String user= "root";
+        String password= "";
+        Statement stmt;
+        String query;
+        ResultSet rs;
+
+        // try and connect to the database
+        try {
+            Class.forName(driver).newInstance();
+            con = (Connection) DriverManager.getConnection(URL, user, password);
+        } catch (Exception e) {
+            System.err.println("Exception: " + e.getMessage());
+        }
+
+        //Socail button
+//********************************************
+
+//Google click
+        google_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://www.google.com"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
+
+        facebook_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://www.facebook.com"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
+
+        forget_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://support.google.com/mail/answer/41078?hl=en&co=GENIE.Platform%3DDesktop"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
+
+        twitter_label.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI("https://www.twitter.com"));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Desktop is not supported. Can't open browser.");
+                }
+            }
+        });
 
 
         //Button login
@@ -1237,6 +1324,24 @@ public class Main extends javax.swing.JFrame{
                     id++;
                     Object row[]={id,name, dob, gender, address, phone, email, telegram};
                     model.addRow(row);
+                    tname.setText(null);
+                    date.setDate(null);
+
+                    combo_Address.setSelectedIndex(0);
+                    tphone.setText(null);
+                    temail.setText(null);
+                    ttelegram.setText(null);
+                    tguardian_phone.setText(null);
+                    tfather.setText(null);
+                    tmother.setText(null);
+                    tguardian.setText(null);
+                    tguardian_phone.setText(null);
+                    limage.setVisible(false);
+                    p_profile.add(limage);
+                    b_male.setSelected(false);
+                    b_female.setSelected(false);
+
+
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, e);
                 }
@@ -1272,7 +1377,6 @@ public class Main extends javax.swing.JFrame{
         btn_search.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String user= JOptionPane.showInputDialog(null, "Input any info: ");
                 DefaultTableModel model = (DefaultTableModel)tb.getModel();
                 TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
@@ -1302,13 +1406,21 @@ public class Main extends javax.swing.JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 int row = tb.getSelectedRow();
-                System.out.println(row);
                 for(int i=0; i<model.getRowCount();i++){
                     DefaultTableModel model = (DefaultTableModel)tb.getModel();
                     int result=JOptionPane.showConfirmDialog(null, "Are you sure?");
                     if(result==JOptionPane.YES_OPTION){
                         model.removeRow(row);
                         JOptionPane.showMessageDialog(null, "Deleted!");
+                        tname.setText(null);
+                        date.setDate(null);
+                        b_male.setSelected(false);
+                        b_female.setSelected(false);
+                        tfather.setText(null);
+                        tmother.setText(null);
+                        combo_Address.setSelectedIndex(0);
+                        tguardian.setText(null);
+                        tguardian_phone.setText(null);
                         break;
                     }else if(result== JOptionPane.NO_OPTION || result== JOptionPane.CANCEL_OPTION){
                         JOptionPane.showMessageDialog(null, "Cancel..!");
@@ -1319,7 +1431,7 @@ public class Main extends javax.swing.JFrame{
 
         });
 
-        //mouse click table
+//      mouse click table
 //        tb.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
 //            @Override
 //            public void valueChanged(ListSelectionEvent event) {
