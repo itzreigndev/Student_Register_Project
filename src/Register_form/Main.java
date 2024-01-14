@@ -1,6 +1,5 @@
 
 package Register_form;
-import com.mysql.jdbc.Statement;
 import com.sun.jdi.connect.spi.Connection;
 import com.toedter.calendar.JDateChooser;
 import java.awt.*;
@@ -23,6 +22,7 @@ import java.awt.Desktop;
 import java.net.URISyntaxException;
 //Database
 import java.awt.Image;
+import java.sql.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -38,7 +38,7 @@ import java.util.logging.Logger;
 public class Main extends javax.swing.JFrame{
     static boolean firstTime = true;
 
-    java.sql.Connection con;
+    static java.sql.Connection con;
     //Constructor
     public Main() {
         createConnection();
@@ -49,6 +49,7 @@ public class Main extends javax.swing.JFrame{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payment", "root", "changeme");
+            System.out.println("Success!");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -59,6 +60,7 @@ public class Main extends javax.swing.JFrame{
 
     public static void main(String[] args) throws SQLException {
 
+        Main mainObject = new Main();
 
         //Code for Database
 
@@ -1293,25 +1295,25 @@ public class Main extends javax.swing.JFrame{
 
         //****************************************************Behavoir
 
-        //Database code
-        Connection con= null;
-        String URL= "jdbc:mysql://localhost/student_register_itc";
-        String driver= "com.mysql.jdbc.Driver";
-        String user= "root";
-        String password= "";
-        Statement stmt;
-        String query;
-        ResultSet rs;
+//        //Database code
+//        Connection con= null;
+//        String URL= "jdbc:mysql://localhost/student_register_itc";
+//        String driver= "com.mysql.jdbc.Driver";
+//        String user= "root";
+//        String password= "";
+//        Statement stmt;
+//        String query;
+//        ResultSet rs;
 
-        // try and connect to the database
-        try {
-            Class.forName(driver).newInstance();
-            con = (Connection) DriverManager.getConnection(URL, user, password);
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-        }
-
-        //Socail button
+//        // try and connect to the database
+//        try {
+//            Class.forName(driver).newInstance();
+//            con = (Connection) DriverManager.getConnection(URL, user, password);
+//        } catch (Exception e) {
+//            System.err.println("Exception: " + e.getMessage());
+//        }
+//
+//        //Socail button
 //********************************************
 
 //Google click
@@ -2120,6 +2122,42 @@ public class Main extends javax.swing.JFrame{
         pay_btn.setBounds(880, 250, 150, 50);
         pay_btn.setFont(new Font("Arial", Font.BOLD, 24));
 
+        //JPanel To Pay
+        JPanel pay_for_license = new JPanel();
+        pay_for_license.setLayout(null);
+        pay_for_license.setBounds(0, 500, 1920, 1080);
+
+        JLabel label_for_tf1 = new JLabel();
+        label_for_tf1.setBounds(580, 50, 800, 50);
+        label_for_tf1.setFont(new Font("Arial", Font.BOLD, 24));
+        label_for_tf1.setText("Enter your name here: ");
+
+        JTextField tf1_for_pay_for_license = new JTextField();
+        tf1_for_pay_for_license.setBounds(1000, 50, 300, 50);
+        tf1_for_pay_for_license.setHorizontalAlignment(SwingConstants.CENTER);
+        tf1_for_pay_for_license.setFont(new Font("Arial", Font.BOLD, 24));
+
+        JLabel label_for_tf2 = new JLabel();
+        label_for_tf2.setBounds(580, 100, 800, 50);
+        label_for_tf2.setFont(new Font("Arial", Font.BOLD, 24));
+        label_for_tf2.setText("Enter your credit card number: ");
+
+        JTextField tf2_for_pay_for_license = new JTextField();
+        tf2_for_pay_for_license.setBounds(1000, 100, 300, 50);
+        tf2_for_pay_for_license.setHorizontalAlignment(SwingConstants.CENTER);
+        tf2_for_pay_for_license.setFont(new Font("Arial", Font.BOLD, 24));
+
+        JButton btn_for_price = new JButton();
+        btn_for_price.setText("5$");
+        btn_for_price.setBounds(750, 170, 150, 50);
+        btn_for_price.setFont(new Font("Arial", Font.BOLD, 24));
+        btn_for_price.setForeground(Color.YELLOW);
+
+        pay_for_license.add(label_for_tf2);
+        pay_for_license.add(label_for_tf1);
+        pay_for_license.add(tf1_for_pay_for_license);
+        pay_for_license.add(tf2_for_pay_for_license);
+
         //License key generated Panel
         JPanel key_gen = new JPanel();
         key_gen.setLayout(null);
@@ -2135,9 +2173,6 @@ public class Main extends javax.swing.JFrame{
         accept_license.setFont(new Font("Arial", Font.BOLD, 24));
         accept_license.setBounds(900, 150, 100, 50);
 
-        // Add to key_gen panel
-        key_gen.add(license_key_generated);
-//        key_gen.add(accept_license);
 
         //accept license button action handler
         accept_license.addActionListener(new ActionListener() {
@@ -2161,14 +2196,38 @@ public class Main extends javax.swing.JFrame{
         license_keys.add("A02");
         license_keys.add("A03");
         //Pay Button Behavoir
-        pay_btn.addActionListener(new ActionListener() {
+        btn_for_price.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String random_license_keys = license_keys.get((int) Math.floor(Math.random()* (license_keys.size())));
                 pay_pan.setVisible(false);
+                String name = tf1_for_pay_for_license.getText();
+                String credit_card_no = tf2_for_pay_for_license.getText();
+                try {
+                    Statement stmt = con.createStatement();
+                    String dbop = "INSERT INTO USERS (name, credit_card_no) VALUES ('" + name + "', '" + credit_card_no + "')";
+                    stmt.execute(dbop);
+                    stmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                pay_for_license.setVisible(false);
                 license_key_generated.setText("This is your license key: " + random_license_keys);
                 key_gen.add(accept_license);
+                key_gen.add(license_key_generated);
                 key_gen.setVisible(true);
+            }
+        });
+
+        pay_btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pay_pan.setVisible(false);
+                key_gen.setVisible(false);
+                pay_for_license.add(btn_for_price);
+                pay_for_license.setVisible(true);
+
             }
         });
 
@@ -2206,6 +2265,7 @@ public class Main extends javax.swing.JFrame{
         inner_agri.add(inner_agri_courses);
         inner_agri.add(pay_pan);
         inner_agri.add(key_gen);
+        inner_agri.add(pay_for_license);
 
         //Show the Frame when clicked
         btn_course.addActionListener(new ActionListener() {
