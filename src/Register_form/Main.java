@@ -31,9 +31,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class Main extends javax.swing.JFrame{
@@ -1259,7 +1256,7 @@ public class Main extends javax.swing.JFrame{
         //*****************Frame 2********************
 
         JFrame fcourses= new JFrame();
-        fcourses.setSize(1540, 900);
+        fcourses.setSize(1920, 1080);
         fcourses.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fcourses.setLayout(null);
         fcourses.setLocationRelativeTo(null);
