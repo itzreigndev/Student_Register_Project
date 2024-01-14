@@ -32,12 +32,33 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends javax.swing.JFrame{
     static boolean firstTime = true;
 
+    java.sql.Connection con;
+    //Constructor
+    public Main() {
+        createConnection();
+    }
+
+    void createConnection() {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/payment", "root", "changeme");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     public static void main(String[] args) throws SQLException {
+
 
         //Code for Database
 
