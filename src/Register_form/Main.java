@@ -2246,24 +2246,25 @@ public class Main extends javax.swing.JFrame{
 
         // license_keys from db
         List<String> license_keys_db = new ArrayList<>();
-        String columnName = "license_key";
 
-        try {
-            Statement stmt3 = con.createStatement();
-            ResultSet rs = stmt3.executeQuery("SELECT `" + columnName + "` FROM LICENSE");
-            while (rs.next()) {
-                String columnValue = rs.getString(columnName);
-                license_keys_db.add(columnValue);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
         //License Enter Button
         license_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String license_number = pay_license.getText();
                 pay_license.setText("");
+                String columnName = "license_key";
+
+                try {
+                    Statement stmt3 = con.createStatement();
+                    ResultSet rs = stmt3.executeQuery("SELECT `" + columnName + "` FROM LICENSE");
+                    while (rs.next()) {
+                        String columnValue = rs.getString(columnName);
+                        license_keys_db.add(columnValue);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 for (String license_key : license_keys_db) {
                     if (license_number.equals(license_key)) {
