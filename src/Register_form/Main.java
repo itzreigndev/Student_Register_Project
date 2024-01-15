@@ -29,11 +29,13 @@ import java.net.URI;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 //Random ID
 import java.util.UUID;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main extends javax.swing.JFrame{
     static boolean firstTime = true;
@@ -61,6 +63,7 @@ public class Main extends javax.swing.JFrame{
     public static void main(String[] args) throws SQLException {
 
         Main mainObject = new Main();
+
 
         //Code for Database
 
@@ -2241,30 +2244,28 @@ public class Main extends javax.swing.JFrame{
             }
         });
 
+        // license_keys from db
+        List<String> license_keys_db = new ArrayList<>();
+        String columnName = "license_key";
+
+        try {
+            Statement stmt3 = con.createStatement();
+            ResultSet rs = stmt3.executeQuery("SELECT `" + columnName + "` FROM LICENSE");
+            while (rs.next()) {
+                String columnValue = rs.getString(columnName);
+                license_keys_db.add(columnValue);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         //License Enter Button
-        ArrayList<String> license_keys_db = new ArrayList<String>();
         license_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String license_number = pay_license.getText();
                 pay_license.setText("");
-                String dbop3 = "SELECT ? FROM LICENSE" ;
-                String columnName = "license_key";
 
-                try (PreparedStatement stmt3 = con.prepareStatement(dbop3)) {
-                    stmt3.setString(1, columnName);
-
-                    try  (ResultSet rs = stmt3.executeQuery()) {
-                        while (rs.next()) {
-                            String columnValue = rs.getString(columnName);
-                            license_keys_db.add(columnValue);
-                        }
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
                 for (String license_key : license_keys_db) {
-                    System.out.println(license_key);
                     if (license_number.equals(license_key)) {
                         pay_pan.setVisible(false);
                         inner_agri_courses.setVisible(true);
