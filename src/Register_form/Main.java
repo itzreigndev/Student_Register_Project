@@ -2147,7 +2147,7 @@ public class Main extends javax.swing.JFrame{
 
         JButton btn_for_price = new JButton();
         btn_for_price.setText("5$");
-        btn_for_price.setBounds(750, 170, 150, 50);
+        btn_for_price.setBounds(830, 170, 150, 50);
         btn_for_price.setFont(new Font("Arial", Font.BOLD, 24));
         btn_for_price.setForeground(Color.YELLOW);
 
