@@ -1,4 +1,3 @@
-
 package Register_form;
 import com.sun.jdi.connect.spi.Connection;
 import com.toedter.calendar.JDateChooser;
@@ -16,6 +15,7 @@ import java.util.Date;
 import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.text.DefaultEditorKit;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.Desktop;
@@ -29,11 +29,11 @@ import java.net.URI;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 //Random ID
 import java.util.UUID;
+//ArrayList
 import java.util.List;
 import java.util.ArrayList;
 
@@ -2166,9 +2166,16 @@ public class Main extends javax.swing.JFrame{
         key_gen.setLayout(null);
         key_gen.setBounds(0, 500, 1920, 1080);
 
-        JLabel license_key_generated = new JLabel();
-        license_key_generated.setBounds(700, 100, 900, 50);
+        JLabel label_for_license_key_generated = new JLabel();
+        label_for_license_key_generated.setBounds(600, 100, 300, 50);
+        label_for_license_key_generated.setFont(new Font("Arial", Font.BOLD, 24));
+        label_for_license_key_generated.setText("Your license key is: ");
+
+        JTextField license_key_generated = new JTextField();
+        license_key_generated.setBounds(900, 100, 500, 50);
         license_key_generated.setFont(new Font("Arial", Font.BOLD, 24));
+        license_key_generated.setBorder(null);
+        license_key_generated.setEditable(false);
 
         //Accept license key button
         JButton accept_license = new JButton();
@@ -2226,8 +2233,9 @@ public class Main extends javax.swing.JFrame{
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     pay_for_license.setVisible(false);
-                    license_key_generated.setText("This is your license key: " + license_keys);
+                    license_key_generated.setText(String.valueOf(license_keys));
                     key_gen.add(accept_license);
+                    key_gen.add(label_for_license_key_generated);
                     key_gen.add(license_key_generated);
                     key_gen.setVisible(true);
             }
