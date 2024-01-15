@@ -2214,30 +2214,33 @@ public class Main extends javax.swing.JFrame{
                 pay_pan.setVisible(false);
                 String name = tf1_for_pay_for_license.getText();
                 String credit_card_no = tf2_for_pay_for_license.getText();
-                String dbop = "INSERT INTO USERS (name, credit_card_no, user_id) VALUES (?, ?, ?)";
-                String dbop2 = "INSERT INTO LICENSE (license_key, user_id) VALUES (?, ?)";
-
-                try (PreparedStatement stmt = con.prepareStatement(dbop)) {
-                    stmt.setString(1, name);
-                    stmt.setString(2, credit_card_no);
-                    stmt.setString(3, String.valueOf(user_id));
-                    stmt.executeUpdate();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try (PreparedStatement stmt2 = con.prepareStatement(dbop2)) {
-                    stmt2.setString(1, String.valueOf(license_keys));
-                    stmt2.setString(2, String.valueOf(user_id));
-                    stmt2.executeUpdate();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                if (!name.isEmpty() && !credit_card_no.isEmpty()) {
+                    String dbop = "INSERT INTO USERS (name, credit_card_no, user_id) VALUES (?, ?, ?)";
+                    String dbop2 = "INSERT INTO LICENSE (license_key, user_id) VALUES (?, ?)";
+                    try (PreparedStatement stmt = con.prepareStatement(dbop)) {
+                        stmt.setString(1, name);
+                        stmt.setString(2, credit_card_no);
+                        stmt.setString(3, String.valueOf(user_id));
+                        stmt.executeUpdate();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try (PreparedStatement stmt2 = con.prepareStatement(dbop2)) {
+                        stmt2.setString(1, String.valueOf(license_keys));
+                        stmt2.setString(2, String.valueOf(user_id));
+                        stmt2.executeUpdate();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     pay_for_license.setVisible(false);
                     license_key_generated.setText(String.valueOf(license_keys));
                     key_gen.add(accept_license);
                     key_gen.add(label_for_license_key_generated);
                     key_gen.add(license_key_generated);
                     key_gen.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter both name and credit card number");
+                }
             }
         });
 
