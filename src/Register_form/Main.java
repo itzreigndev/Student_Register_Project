@@ -32,6 +32,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+//Random ID
+import java.util.UUID;
 
 public class Main extends javax.swing.JFrame{
     static boolean firstTime = true;
@@ -2162,7 +2164,7 @@ public class Main extends javax.swing.JFrame{
         key_gen.setBounds(0, 500, 1920, 1080);
 
         JLabel license_key_generated = new JLabel();
-        license_key_generated.setBounds(800, 100, 700, 50);
+        license_key_generated.setBounds(700, 100, 900, 50);
         license_key_generated.setFont(new Font("Arial", Font.BOLD, 24));
 
         //Accept license key button
@@ -2188,33 +2190,43 @@ public class Main extends javax.swing.JFrame{
         pay_pan.add(license_label);
         pay_pan.add(license_btn);
 
-        // License keys for agri_food+
-        ArrayList<String> license_keys = new ArrayList<String>();
-        license_keys.add("A01");
-        license_keys.add("A02");
-        license_keys.add("A03");
+        // License keys for agri_food
+        final UUID license_keys = UUID.randomUUID();
+//        ArrayList<String> license_keys = new ArrayList<String>();
+//        license_keys.add("A01");
+//        license_keys.add("A02");
+//        license_keys.add("A03");
         //Pay Button Behavoir
         btn_for_price.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String random_license_keys = license_keys.get((int) Math.floor(Math.random()* (license_keys.size())));
+                UUID user_id = UUID.randomUUID();
                 pay_pan.setVisible(false);
                 String name = tf1_for_pay_for_license.getText();
                 String credit_card_no = tf2_for_pay_for_license.getText();
-                try {
-                    Statement stmt = con.createStatement();
-                    String dbop = "INSERT INTO USERS (name, credit_card_no) VALUES ('" + name + "', '" + credit_card_no + "')";
-                    stmt.execute(dbop);
-                    stmt.close();
+                String dbop = "INSERT INTO USERS (name, credit_card_no, user_id) VALUES (?, ?, ?)";
+                String dbop2 = "INSERT INTO LICENSE (license_key, user_id) VALUES (?, ?)";
+
+                try (PreparedStatement stmt = con.prepareStatement(dbop)) {
+                    stmt.setString(1, name);
+                    stmt.setString(2, credit_card_no);
+                    stmt.setString(3, String.valueOf(user_id));
+                    stmt.executeUpdate();
                 } catch (SQLException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                pay_for_license.setVisible(false);
-                license_key_generated.setText("This is your license key: " + random_license_keys);
-                key_gen.add(accept_license);
-                key_gen.add(license_key_generated);
-                key_gen.setVisible(true);
+                try (PreparedStatement stmt2 = con.prepareStatement(dbop2)) {
+                    stmt2.setString(1, String.valueOf(license_keys));
+                    stmt2.setString(2, String.valueOf(user_id));
+                    stmt2.executeUpdate();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    pay_for_license.setVisible(false);
+                    license_key_generated.setText("This is your license key: " + license_keys);
+                    key_gen.add(accept_license);
+                    key_gen.add(license_key_generated);
+                    key_gen.setVisible(true);
             }
         });
 
@@ -2230,12 +2242,29 @@ public class Main extends javax.swing.JFrame{
         });
 
         //License Enter Button
+        ArrayList<String> license_keys_db = new ArrayList<String>();
         license_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String license_number = pay_license.getText();
                 pay_license.setText("");
-                for (String license_key : license_keys) {
+                String dbop3 = "SELECT ? FROM LICENSE" ;
+                String columnName = "license_key";
+
+                try (PreparedStatement stmt3 = con.prepareStatement(dbop3)) {
+                    stmt3.setString(1, columnName);
+
+                    try  (ResultSet rs = stmt3.executeQuery()) {
+                        while (rs.next()) {
+                            String columnValue = rs.getString(columnName);
+                            license_keys_db.add(columnValue);
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                for (String license_key : license_keys_db) {
+                    System.out.println(license_key);
                     if (license_number.equals(license_key)) {
                         pay_pan.setVisible(false);
                         inner_agri_courses.setVisible(true);
